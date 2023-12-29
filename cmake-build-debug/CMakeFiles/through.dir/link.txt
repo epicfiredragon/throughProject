@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/through.dir/main.cpp.o -o through 
+/usr/bin/c++ -g CMakeFiles/through.dir/main.cpp.o CMakeFiles/through.dir/Solver.cpp.o CMakeFiles/through.dir/Writer.cpp.o CMakeFiles/through.dir/Reader.cpp.o -o through 

@@ -129,6 +129,78 @@ through/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/build
 .PHONY : through/fast
 
+Reader.o: Reader.cpp.o
+.PHONY : Reader.o
+
+# target to build an object file
+Reader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/Reader.cpp.o
+.PHONY : Reader.cpp.o
+
+Reader.i: Reader.cpp.i
+.PHONY : Reader.i
+
+# target to preprocess a source file
+Reader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/Reader.cpp.i
+.PHONY : Reader.cpp.i
+
+Reader.s: Reader.cpp.s
+.PHONY : Reader.s
+
+# target to generate assembly for a file
+Reader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/Reader.cpp.s
+.PHONY : Reader.cpp.s
+
+Solver.o: Solver.cpp.o
+.PHONY : Solver.o
+
+# target to build an object file
+Solver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/Solver.cpp.o
+.PHONY : Solver.cpp.o
+
+Solver.i: Solver.cpp.i
+.PHONY : Solver.i
+
+# target to preprocess a source file
+Solver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/Solver.cpp.i
+.PHONY : Solver.cpp.i
+
+Solver.s: Solver.cpp.s
+.PHONY : Solver.s
+
+# target to generate assembly for a file
+Solver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/Solver.cpp.s
+.PHONY : Solver.cpp.s
+
+Writer.o: Writer.cpp.o
+.PHONY : Writer.o
+
+# target to build an object file
+Writer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/Writer.cpp.o
+.PHONY : Writer.cpp.o
+
+Writer.i: Writer.cpp.i
+.PHONY : Writer.i
+
+# target to preprocess a source file
+Writer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/Writer.cpp.i
+.PHONY : Writer.cpp.i
+
+Writer.s: Writer.cpp.s
+.PHONY : Writer.s
+
+# target to generate assembly for a file
+Writer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/Writer.cpp.s
+.PHONY : Writer.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -162,6 +234,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... through"
+	@echo "... Reader.o"
+	@echo "... Reader.i"
+	@echo "... Reader.s"
+	@echo "... Solver.o"
+	@echo "... Solver.i"
+	@echo "... Solver.s"
+	@echo "... Writer.o"
+	@echo "... Writer.i"
+	@echo "... Writer.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

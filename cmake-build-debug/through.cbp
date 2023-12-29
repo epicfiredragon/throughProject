@@ -82,6 +82,30 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/epicfiredragon/through/FileInfo.h">
+			<Option target="through"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/Reader.cpp">
+			<Option target="through"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/Reader.h">
+			<Option target="through"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/Solver.cpp">
+			<Option target="through"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/Solver.h">
+			<Option target="through"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/TypeFile.h">
+			<Option target="through"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/Writer.cpp">
+			<Option target="through"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/Writer.h">
+			<Option target="through"/>
+		</Unit>
 		<Unit filename="/home/epicfiredragon/through/main.cpp">
 			<Option target="through"/>
 		</Unit>

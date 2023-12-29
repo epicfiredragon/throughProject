@@ -1,29 +1,42 @@
 #include <iostream>
 #include <memory>
 #include <vector>
+#include "Writer.h"
+#include "Reader.h"
+#include "Solver.h"
+#include "FileInfo.h"
 
-class Reader {
-public:
-    virtual std::string ReadNextLine() = 0;
-    virtual bool IsEnd() = 0;
+enum class ApplicationType {
+    CMD, UI, WEB
 };
 
-class Writer {
-public:
-    virtual std::string WriteLine(const std::string&) = 0;
+enum class SolverType {
+    My, Library
 };
+
+const ApplicationType typeApp = ApplicationType::CMD;
+const SolverType typeSolver = SolverType::My;
 
 class ArithmeticSolver {
 public:
-    virtual std::string Solve(const std::string&) = 0;
+    virtual std::string Solve(const std::string &) = 0;
 };
 
 class MyArithmeticSolver : public ArithmeticSolver {
 public:
-    std::string Solve(const std::string& str) override {
+    std::string Solve(const std::string &str) override {
         /*
          * TODO : Dima
           * ебани сюда польскую обратную
+         */
+    }
+};
+
+class LibraryArithmeticSolver : public ArithmeticSolver {
+public:
+    std::string Solve(const std::string &str) override {
+        /*
+         * TODO : найти библу
          */
     }
 };
@@ -33,18 +46,23 @@ struct markedSubstring {
     bool is_arithmetic = false;
 };
 
-std::vector<markedSubstring> MarkArithmetic(const std::string& str) {
+std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
     /*
     * TODO : Dima
      * эта хуйня должна бить строку в подстроки, если это выражение, то кидай подстроку в структуру и ставь тру в is_arithmetic
     */
 }
 
-void HandleFile(const std::shared_ptr<Reader>& reader, const std::shared_ptr<Writer>& writer, const std::shared_ptr<ArithmeticSolver>& solver) {
+void
+HandleProcessedFile(const std::shared_ptr<Reader> &reader, const std::shared_ptr<Writer> &writer,
+                    const std::shared_ptr<ArithmeticSolver> &solver) {
     while (!reader->IsEnd()) {
         auto marked_substrings = MarkArithmetic(reader->ReadNextLine());
+        /*
+         * TODO : exceptions
+         */
         std::string handled_string;
-        for (const auto& i : marked_substrings) {
+        for (const auto &i: marked_substrings) {
             if (i.is_arithmetic) {
                 handled_string += solver->Solve(i.str);
             } else {
@@ -55,7 +73,49 @@ void HandleFile(const std::shared_ptr<Reader>& reader, const std::shared_ptr<Wri
     }
 }
 
+std::shared_ptr<ArithmeticSolver> ChooseSolver() {
+    switch (typeSolver) {
+        case SolverType::My:
+            return std::make_shared<MyArithmeticSolver>();
+        case SolverType::Library:
+            return std::make_shared<LibraryArithmeticSolver>();
+    }
+}
+
+void ProcessAndHandleFile(const FileInfo &info) {
+
+    HandleProcessedFile(ChooseReader(info.in_type, info.in_file_name),
+                        ChooseWriter(info.out_type, info.out_file_name), ChooseSolver());
+}
+
+void mainCMD() {
+    FileInfo info;
+    /*
+     * TODO : Dima
+      * напиши тут ввод с консоли всей херни (имя вход выход, тип вход выход, как шифровали/архивировали, как надо на выходе)
+      * и собери в FileInfo
+     */
+    ProcessAndHandleFile(info);
+}
+
+void mainUI() {
+
+}
+
+void mainWEB() {
+
+}
+
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    switch (typeApp) {
+        case ApplicationType::CMD:
+            mainCMD();
+            break;
+        case ApplicationType::UI:
+            mainUI();
+            break;
+        case ApplicationType::WEB:
+            mainWEB();
+            break;
+    }
 }

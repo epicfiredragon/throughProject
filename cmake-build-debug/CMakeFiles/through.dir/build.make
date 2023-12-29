@@ -83,17 +83,65 @@ CMakeFiles/through.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/through.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/epicfiredragon/through/main.cpp -o CMakeFiles/through.dir/main.cpp.s
 
+CMakeFiles/through.dir/Solver.cpp.o: CMakeFiles/through.dir/flags.make
+CMakeFiles/through.dir/Solver.cpp.o: ../Solver.cpp
+CMakeFiles/through.dir/Solver.cpp.o: CMakeFiles/through.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/epicfiredragon/through/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/through.dir/Solver.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/through.dir/Solver.cpp.o -MF CMakeFiles/through.dir/Solver.cpp.o.d -o CMakeFiles/through.dir/Solver.cpp.o -c /home/epicfiredragon/through/Solver.cpp
+
+CMakeFiles/through.dir/Solver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/through.dir/Solver.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/epicfiredragon/through/Solver.cpp > CMakeFiles/through.dir/Solver.cpp.i
+
+CMakeFiles/through.dir/Solver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/through.dir/Solver.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/epicfiredragon/through/Solver.cpp -o CMakeFiles/through.dir/Solver.cpp.s
+
+CMakeFiles/through.dir/Writer.cpp.o: CMakeFiles/through.dir/flags.make
+CMakeFiles/through.dir/Writer.cpp.o: ../Writer.cpp
+CMakeFiles/through.dir/Writer.cpp.o: CMakeFiles/through.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/epicfiredragon/through/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/through.dir/Writer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/through.dir/Writer.cpp.o -MF CMakeFiles/through.dir/Writer.cpp.o.d -o CMakeFiles/through.dir/Writer.cpp.o -c /home/epicfiredragon/through/Writer.cpp
+
+CMakeFiles/through.dir/Writer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/through.dir/Writer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/epicfiredragon/through/Writer.cpp > CMakeFiles/through.dir/Writer.cpp.i
+
+CMakeFiles/through.dir/Writer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/through.dir/Writer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/epicfiredragon/through/Writer.cpp -o CMakeFiles/through.dir/Writer.cpp.s
+
+CMakeFiles/through.dir/Reader.cpp.o: CMakeFiles/through.dir/flags.make
+CMakeFiles/through.dir/Reader.cpp.o: ../Reader.cpp
+CMakeFiles/through.dir/Reader.cpp.o: CMakeFiles/through.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/epicfiredragon/through/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/through.dir/Reader.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/through.dir/Reader.cpp.o -MF CMakeFiles/through.dir/Reader.cpp.o.d -o CMakeFiles/through.dir/Reader.cpp.o -c /home/epicfiredragon/through/Reader.cpp
+
+CMakeFiles/through.dir/Reader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/through.dir/Reader.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/epicfiredragon/through/Reader.cpp > CMakeFiles/through.dir/Reader.cpp.i
+
+CMakeFiles/through.dir/Reader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/through.dir/Reader.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/epicfiredragon/through/Reader.cpp -o CMakeFiles/through.dir/Reader.cpp.s
+
 # Object files for target through
 through_OBJECTS = \
-"CMakeFiles/through.dir/main.cpp.o"
+"CMakeFiles/through.dir/main.cpp.o" \
+"CMakeFiles/through.dir/Solver.cpp.o" \
+"CMakeFiles/through.dir/Writer.cpp.o" \
+"CMakeFiles/through.dir/Reader.cpp.o"
 
 # External object files for target through
 through_EXTERNAL_OBJECTS =
 
 through: CMakeFiles/through.dir/main.cpp.o
+through: CMakeFiles/through.dir/Solver.cpp.o
+through: CMakeFiles/through.dir/Writer.cpp.o
+through: CMakeFiles/through.dir/Reader.cpp.o
 through: CMakeFiles/through.dir/build.make
 through: CMakeFiles/through.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/epicfiredragon/through/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable through"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/epicfiredragon/through/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable through"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/through.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

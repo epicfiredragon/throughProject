@@ -10,36 +10,8 @@ enum class ApplicationType {
     CMD, UI, WEB
 };
 
-enum class SolverType {
-    My, Library
-};
-
 const ApplicationType typeApp = ApplicationType::CMD;
 const SolverType typeSolver = SolverType::My;
-
-class ArithmeticSolver {
-public:
-    virtual std::string Solve(const std::string &) = 0;
-};
-
-class MyArithmeticSolver : public ArithmeticSolver {
-public:
-    std::string Solve(const std::string &str) override {
-        /*
-         * TODO : Dima
-          * ебани сюда польскую обратную
-         */
-    }
-};
-
-class LibraryArithmeticSolver : public ArithmeticSolver {
-public:
-    std::string Solve(const std::string &str) override {
-        /*
-         * TODO : найти библу
-         */
-    }
-};
 
 struct markedSubstring {
     std::string str;
@@ -73,19 +45,10 @@ HandleProcessedFile(const std::shared_ptr<Reader> &reader, const std::shared_ptr
     }
 }
 
-std::shared_ptr<ArithmeticSolver> ChooseSolver() {
-    switch (typeSolver) {
-        case SolverType::My:
-            return std::make_shared<MyArithmeticSolver>();
-        case SolverType::Library:
-            return std::make_shared<LibraryArithmeticSolver>();
-    }
-}
-
 void ProcessAndHandleFile(const FileInfo &info) {
 
     HandleProcessedFile(ChooseReader(info.in_type, info.in_file_name),
-                        ChooseWriter(info.out_type, info.out_file_name), ChooseSolver());
+                        ChooseWriter(info.out_type, info.out_file_name), ChooseSolver(typeSolver));
 }
 
 void mainCMD() {
@@ -93,7 +56,8 @@ void mainCMD() {
     /*
      * TODO : Dima
       * напиши тут ввод с консоли всей херни (имя вход выход, тип вход выход, как шифровали/архивировали, как надо на выходе)
-      * и собери в FileInfo
+      * и собери в FileInfo info
+      * еще дай чек на несовпадение имен
      */
     ProcessAndHandleFile(info);
 }

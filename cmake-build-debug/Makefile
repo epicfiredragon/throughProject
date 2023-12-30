@@ -129,6 +129,30 @@ through/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/build
 .PHONY : through/fast
 
+FileProcessor.o: FileProcessor.cpp.o
+.PHONY : FileProcessor.o
+
+# target to build an object file
+FileProcessor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/FileProcessor.cpp.o
+.PHONY : FileProcessor.cpp.o
+
+FileProcessor.i: FileProcessor.cpp.i
+.PHONY : FileProcessor.i
+
+# target to preprocess a source file
+FileProcessor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/FileProcessor.cpp.i
+.PHONY : FileProcessor.cpp.i
+
+FileProcessor.s: FileProcessor.cpp.s
+.PHONY : FileProcessor.s
+
+# target to generate assembly for a file
+FileProcessor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/FileProcessor.cpp.s
+.PHONY : FileProcessor.cpp.s
+
 Reader.o: Reader.cpp.o
 .PHONY : Reader.o
 
@@ -234,6 +258,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... through"
+	@echo "... FileProcessor.o"
+	@echo "... FileProcessor.i"
+	@echo "... FileProcessor.s"
 	@echo "... Reader.o"
 	@echo "... Reader.i"
 	@echo "... Reader.s"

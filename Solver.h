@@ -4,10 +4,7 @@
 #include <iostream>
 #include <memory>
 #include <vector>
-
-enum class SolverType {
-    My, Library
-};
+#include "SolverType.h"
 
 class ArithmeticSolver {
 public:

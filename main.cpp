@@ -5,6 +5,7 @@
 #include "Reader.h"
 #include "Solver.h"
 #include "FileInfo.h"
+#include "FileProcessor.h"
 
 enum class ApplicationType {
     CMD, UI, WEB
@@ -21,7 +22,7 @@ struct markedSubstring {
 std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
     /*
     * TODO : Dima
-     * эта хуйня должна бить строку в подстроки, если это выражение, то кидай подстроку в структуру и ставь тру в is_arithmetic
+     * эта хуйня должна бить строку в подстроки, если это выражение, то кидай подстроку в структуру и ставь тру в is_arithmetic, иначе просто кидай
     */
 }
 
@@ -45,10 +46,15 @@ HandleProcessedFile(const std::shared_ptr<Reader> &reader, const std::shared_ptr
     }
 }
 
-void ProcessAndHandleFile(const FileInfo &info) {
-
+void ProcessAndHandleFile(const FileInfo &info, SolverType typeSolver) {
+    for (const auto& processor_step : info.pre_steps) {
+        ChooseFileProcessor(processor_step)->Process(info.in_file_name);
+    }
     HandleProcessedFile(ChooseReader(info.in_type, info.in_file_name),
                         ChooseWriter(info.out_type, info.out_file_name), ChooseSolver(typeSolver));
+    for (const auto& processor_step : info.post_steps) {
+        ChooseFileProcessor(processor_step)->Process(info.out_file_name);
+    }
 }
 
 void mainCMD() {
@@ -59,7 +65,7 @@ void mainCMD() {
       * и собери в FileInfo info
       * еще дай чек на несовпадение имен
      */
-    ProcessAndHandleFile(info);
+    ProcessAndHandleFile(info, typeSolver);
 }
 
 void mainUI() {

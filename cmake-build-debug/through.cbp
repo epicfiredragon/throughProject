@@ -85,6 +85,12 @@
 		<Unit filename="/home/epicfiredragon/through/FileInfo.h">
 			<Option target="through"/>
 		</Unit>
+		<Unit filename="/home/epicfiredragon/through/FileProcessor.cpp">
+			<Option target="through"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/FileProcessor.h">
+			<Option target="through"/>
+		</Unit>
 		<Unit filename="/home/epicfiredragon/through/Reader.cpp">
 			<Option target="through"/>
 		</Unit>
@@ -95,6 +101,9 @@
 			<Option target="through"/>
 		</Unit>
 		<Unit filename="/home/epicfiredragon/through/Solver.h">
+			<Option target="through"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/SolverType.h">
 			<Option target="through"/>
 		</Unit>
 		<Unit filename="/home/epicfiredragon/through/TypeFile.h">

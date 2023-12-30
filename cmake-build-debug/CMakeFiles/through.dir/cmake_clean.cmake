@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/through.dir/FileProcessor.cpp.o"
+  "CMakeFiles/through.dir/FileProcessor.cpp.o.d"
   "CMakeFiles/through.dir/Reader.cpp.o"
   "CMakeFiles/through.dir/Reader.cpp.o.d"
   "CMakeFiles/through.dir/Solver.cpp.o"

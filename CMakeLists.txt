@@ -11,4 +11,7 @@ add_executable(through main.cpp
         Reader.cpp
         Reader.h
         FileInfo.h
-        TypeFile.h)
+        TypeFile.h
+        FileProcessor.cpp
+        FileProcessor.h
+        SolverType.h)

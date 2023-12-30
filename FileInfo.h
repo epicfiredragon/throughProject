@@ -5,10 +5,7 @@
 #include <memory>
 #include <vector>
 #include "TypeFile.h"
-
-struct FileProcessingStep {
-
-};
+#include "FileProcessor.h"
 
 struct FileInfo {
     std::string in_file_name;

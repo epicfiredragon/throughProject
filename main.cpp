@@ -1,6 +1,7 @@
 #include <iostream>
 #include "SolverType.h"
 #include "ProcessAndHandleFile.h"
+#include "FileInfo.h"
 
 enum class ApplicationType {
     CMD, UI, WEB

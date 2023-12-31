@@ -1,8 +1,6 @@
 #ifndef THROUGH_FILEPROCESSOR_H
 #define THROUGH_FILEPROCESSOR_H
 
-#include <iostream>
-#include <vector>
 #include <memory>
 
 enum class FileProcessingStep {

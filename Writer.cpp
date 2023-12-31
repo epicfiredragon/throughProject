@@ -33,7 +33,7 @@ JSONWriter::JSONWriter(const std::string &filename) {}
 
 void JSONWriter::WriteLine(const std::string &) {}
 
-std::shared_ptr<Writer> ChooseWriter(TypeFile type, const std::string& out_file_name) {
+std::shared_ptr<Writer> ChooseWriter(TypeFile type, const std::string &out_file_name) {
     switch (type) {
         case TypeFile::Text:
             return std::make_shared<TextWriter>(out_file_name);

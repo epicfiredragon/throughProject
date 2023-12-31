@@ -91,6 +91,12 @@
 		<Unit filename="/home/epicfiredragon/through/FileProcessor.h">
 			<Option target="through"/>
 		</Unit>
+		<Unit filename="/home/epicfiredragon/through/ProcessAndHandleFile.cpp">
+			<Option target="through"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/ProcessAndHandleFile.h">
+			<Option target="through"/>
+		</Unit>
 		<Unit filename="/home/epicfiredragon/through/Reader.cpp">
 			<Option target="through"/>
 		</Unit>

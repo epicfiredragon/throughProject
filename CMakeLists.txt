@@ -14,4 +14,6 @@ add_executable(through main.cpp
         TypeFile.h
         FileProcessor.cpp
         FileProcessor.h
-        SolverType.h)
+        SolverType.h
+        ProcessAndHandleFile.cpp
+        ProcessAndHandleFile.h)

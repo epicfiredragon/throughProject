@@ -27,7 +27,7 @@ public:
     bool IsEnd() override;
 };
 
-std::shared_ptr<Reader> ChooseReader(TypeFile type, const std::string& in_file_name) {
+std::shared_ptr<Reader> ChooseReader(TypeFile type, const std::string &in_file_name) {
     switch (type) {
         case TypeFile::Text:
             return std::make_shared<TextReader>(in_file_name);

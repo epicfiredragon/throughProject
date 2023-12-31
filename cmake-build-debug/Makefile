@@ -153,6 +153,30 @@ FileProcessor.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/FileProcessor.cpp.s
 .PHONY : FileProcessor.cpp.s
 
+ProcessAndHandleFile.o: ProcessAndHandleFile.cpp.o
+.PHONY : ProcessAndHandleFile.o
+
+# target to build an object file
+ProcessAndHandleFile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/ProcessAndHandleFile.cpp.o
+.PHONY : ProcessAndHandleFile.cpp.o
+
+ProcessAndHandleFile.i: ProcessAndHandleFile.cpp.i
+.PHONY : ProcessAndHandleFile.i
+
+# target to preprocess a source file
+ProcessAndHandleFile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/ProcessAndHandleFile.cpp.i
+.PHONY : ProcessAndHandleFile.cpp.i
+
+ProcessAndHandleFile.s: ProcessAndHandleFile.cpp.s
+.PHONY : ProcessAndHandleFile.s
+
+# target to generate assembly for a file
+ProcessAndHandleFile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/ProcessAndHandleFile.cpp.s
+.PHONY : ProcessAndHandleFile.cpp.s
+
 Reader.o: Reader.cpp.o
 .PHONY : Reader.o
 
@@ -261,6 +285,9 @@ help:
 	@echo "... FileProcessor.o"
 	@echo "... FileProcessor.i"
 	@echo "... FileProcessor.s"
+	@echo "... ProcessAndHandleFile.o"
+	@echo "... ProcessAndHandleFile.i"
+	@echo "... ProcessAndHandleFile.s"
 	@echo "... Reader.o"
 	@echo "... Reader.i"
 	@echo "... Reader.s"

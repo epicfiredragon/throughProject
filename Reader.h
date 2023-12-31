@@ -1,8 +1,6 @@
 #ifndef THROUGH_READER_H
 #define THROUGH_READER_H
 
-#include <iostream>
-#include <vector>
 #include <memory>
 #include "TypeFile.h"
 

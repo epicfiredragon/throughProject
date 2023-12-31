@@ -1,8 +1,6 @@
 #ifndef THROUGH_FILEINFO_H
 #define THROUGH_FILEINFO_H
 
-#include <iostream>
-#include <memory>
 #include <vector>
 #include "TypeFile.h"
 #include "FileProcessor.h"

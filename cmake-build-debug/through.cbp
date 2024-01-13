@@ -121,6 +121,9 @@
 		<Unit filename="/home/epicfiredragon/through/Writer.h">
 			<Option target="through"/>
 		</Unit>
+		<Unit filename="/home/epicfiredragon/through/exeptions.h">
+			<Option target="through"/>
+		</Unit>
 		<Unit filename="/home/epicfiredragon/through/main.cpp">
 			<Option target="through"/>
 		</Unit>

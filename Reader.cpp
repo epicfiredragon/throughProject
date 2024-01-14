@@ -6,13 +6,10 @@
 #include <Poco/XML/ParserEngine.h>
 
 class TextReader : public Reader {
-    std::ifstream stream;
+    std::istream& stream;
     bool ended;
 public:
-    explicit TextReader(const std::string &filename): stream(filename) {
-        if (!stream.is_open()) {
-            throw FileOpenError(filename);
-        }
+    explicit TextReader(std::istream &filename): stream(filename) {
         ended = (stream.peek() != EOF);
     }
 
@@ -32,7 +29,7 @@ class XMLReader : public Reader {
     Poco::SharedPtr<Poco::JSON::Array> array;
     size_t num_of_processed;
 public:
-    explicit XMLReader(const std::string &filename) {
+    explicit XMLReader(std::istream &filename) {
 
     }
 
@@ -49,16 +46,12 @@ class JSONReader : public Reader {
     Poco::SharedPtr<Poco::JSON::Array> array;
     size_t num_of_processed;
 public:
-    explicit JSONReader(const std::string &filename) {
-        std::ifstream stream(filename);
-        if (!stream.is_open()) {
-            throw FileOpenError(filename);
-        }
+    explicit JSONReader(std::istream &filename) {
         Poco::JSON::Parser parser;
-        Poco::Dynamic::Var result = parser.parse(stream);
+        Poco::Dynamic::Var result = parser.parse(filename);
         auto parsed = result.extract<Poco::JSON::Object::Ptr>();
         if (!parsed->has("expressions")) {
-            throw BadFileSyntaxError(filename);
+            throw BadFileSyntaxError("");
         }
         array = parsed->getArray("expressions");
         num_of_processed = 0;
@@ -73,7 +66,7 @@ public:
     }
 };
 
-std::shared_ptr<Reader> ChooseReader(TypeFile type, const std::string &in_file_name) {
+std::shared_ptr<Reader> ChooseReader(TypeFile type, std::istream &in_file_name) {
     switch (type) {
         case TypeFile::Text:
             return std::make_shared<TextReader>(in_file_name);

@@ -10,6 +10,7 @@ enum class FileProcessingStep {
 class FileProcessor {
 public:
     virtual void Step(std::string) = 0;
+
     virtual void Restep(std::string) = 0;
 };
 

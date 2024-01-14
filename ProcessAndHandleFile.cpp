@@ -1,6 +1,7 @@
 #include "ProcessAndHandleFile.h"
 #include <memory>
 #include <vector>
+#include <sstream>
 #include "Writer.h"
 #include "Reader.h"
 #include "Solver.h"
@@ -40,12 +41,15 @@ HandleProcessedFile(const std::shared_ptr<Reader> &reader, const std::shared_ptr
 }
 
 void ProcessAndHandleFile(const FileInfo &info, SolverType typeSolver) {
+    std::if
+    std::stringstream from;
+    std::stringstream to;
     for (const auto &processor_step: info.pre_steps) {
-        ChooseFileProcessor(processor_step)->Restep(info.in_file_name);
+        ChooseFileProcessor(processor_step)->Restep(from);
     }
-    HandleProcessedFile(ChooseReader(info.in_type, info.in_file_name),
-                        ChooseWriter(info.out_type, info.out_file_name), ChooseSolver(typeSolver));
+    HandleProcessedFile(ChooseReader(info.in_type, from),
+                        ChooseWriter(info.out_type, to), ChooseSolver(typeSolver));
     for (const auto &processor_step: info.post_steps) {
-        ChooseFileProcessor(processor_step)->Step(info.out_file_name);
+        ChooseFileProcessor(processor_step)->Step(to);
     }
 }

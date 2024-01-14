@@ -18,3 +18,5 @@ add_executable(through main.cpp
         ProcessAndHandleFile.cpp
         ProcessAndHandleFile.h
         exeptions.h)
+
+target_link_libraries(through PocoNet PocoNetSSL PocoFoundation PocoJSON PocoUtil)

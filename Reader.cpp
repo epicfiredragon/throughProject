@@ -37,11 +37,11 @@ public:
     }
 
     std::string ReadNextLine() override {
-
+        return "0";
     }
 
     bool IsEnd() override {
-        return ended;
+        return true;
     }
 };
 
@@ -55,7 +55,8 @@ public:
             throw FileOpenError(filename);
         }
         Poco::JSON::Parser parser;
-        auto parsed = parser.parse(stream).extract<Poco::JSON::Object::Ptr>();
+        Poco::Dynamic::Var result = parser.parse(stream);
+        auto parsed = result.extract<Poco::JSON::Object::Ptr>();
         if (!parsed->has("expressions")) {
             throw BadFileSyntaxError(filename);
         }

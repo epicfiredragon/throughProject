@@ -41,11 +41,11 @@ HandleProcessedFile(const std::shared_ptr<Reader> &reader, const std::shared_ptr
 
 void ProcessAndHandleFile(const FileInfo &info, SolverType typeSolver) {
     for (const auto &processor_step: info.pre_steps) {
-        ChooseFileProcessor(processor_step)->Process(info.in_file_name);
+        ChooseFileProcessor(processor_step)->Restep(info.in_file_name);
     }
     HandleProcessedFile(ChooseReader(info.in_type, info.in_file_name),
                         ChooseWriter(info.out_type, info.out_file_name), ChooseSolver(typeSolver));
     for (const auto &processor_step: info.post_steps) {
-        ChooseFileProcessor(processor_step)->Process(info.out_file_name);
+        ChooseFileProcessor(processor_step)->Step(info.out_file_name);
     }
 }

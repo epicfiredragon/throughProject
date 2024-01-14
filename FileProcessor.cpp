@@ -2,14 +2,20 @@
 
 class ZipFileProcessor : public FileProcessor {
 public:
-    void Process(std::string str) override {
+    void Step(std::string str) override {
+
+    }
+    void Restep(std::string str) override {
 
     }
 };
 
 class RSAFileProcessor : public FileProcessor {
 public:
-    void Process(std::string str) override {
+    void Step(std::string str) override {
+
+    }
+    void Restep(std::string str) override {
 
     }
 };

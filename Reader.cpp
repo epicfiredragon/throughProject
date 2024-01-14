@@ -9,7 +9,7 @@ class TextReader : public Reader {
     std::istream& stream;
     bool ended;
 public:
-    explicit TextReader(std::istream &filename): stream(filename) {
+    explicit TextReader(std::istream &istream): stream(istream) {
         ended = (stream.peek() != EOF);
     }
 
@@ -29,7 +29,7 @@ class XMLReader : public Reader {
     Poco::SharedPtr<Poco::JSON::Array> array;
     size_t num_of_processed;
 public:
-    explicit XMLReader(std::istream &filename) {
+    explicit XMLReader(std::istream &istream) {
 
     }
 
@@ -46,9 +46,9 @@ class JSONReader : public Reader {
     Poco::SharedPtr<Poco::JSON::Array> array;
     size_t num_of_processed;
 public:
-    explicit JSONReader(std::istream &filename) {
+    explicit JSONReader(std::istream &istream) {
         Poco::JSON::Parser parser;
-        Poco::Dynamic::Var result = parser.parse(filename);
+        Poco::Dynamic::Var result = parser.parse(istream);
         auto parsed = result.extract<Poco::JSON::Object::Ptr>();
         if (!parsed->has("expressions")) {
             throw BadFileSyntaxError("");
@@ -66,13 +66,13 @@ public:
     }
 };
 
-std::shared_ptr<Reader> ChooseReader(TypeFile type, std::istream &in_file_name) {
+std::shared_ptr<Reader> ChooseReader(TypeFile type, std::istream &stream) {
     switch (type) {
         case TypeFile::Text:
-            return std::make_shared<TextReader>(in_file_name);
+            return std::make_shared<TextReader>(stream);
         case TypeFile::XML:
-            return std::make_shared<XMLReader>(in_file_name);
+            return std::make_shared<XMLReader>(stream);
         case TypeFile::JSON:
-            return std::make_shared<JSONReader>(in_file_name);
+            return std::make_shared<JSONReader>(stream);
     }
 }

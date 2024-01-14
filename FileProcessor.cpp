@@ -1,64 +1,37 @@
 #include <fstream>
 #include "FileProcessor.h"
-#include "exeptions.h"
-#include <Poco/FileStream.h>
 #include <Poco/Zip/Decompress.h>
 #include <Poco/Zip/Compress.h>
-#include <Poco/Timestamp.h>
-#include <Poco/File.h>
+#include <Poco/Zip/ZipStream.h>
+#include <Poco/StreamCopier.h>
+#include <sstream>
 
 class ZipFileProcessor : public FileProcessor {
 public:
-    void Step(std::string str) override {
-        std::ofstream zip_file(str + '0', std::ios::binary);
-        if (!zip_file.is_open()) {
-            throw FileCreationError(str);
-        }
-        Poco::Zip::Compress compressor(zip_file, true);
-        Poco::File from_file(str);
-        if (!from_file.exists()) {
-            throw FileOpenError(str);
-        }
-        compressor.addDirectory(from_file.path(), Poco::DateTime());
+    void Step(std::iostream &stream) override {
+        std::stringstream zip;
+        Poco::Zip::Compress compressor(zip, true);
+        compressor.addFile(stream, Poco::DateTime(), Poco::Path(".file"));
         compressor.close();
-        zip_file.close();
-        if (std::remove(str.c_str())) {
-            throw FileRemovingError(str);
-        }
-        if (std::rename((str + '0').c_str(), str.c_str())) {
-            throw FileRenamingError(str + '0');
-        }
+        stream.clear();
+        Poco::StreamCopier::copyStream(zip, stream);
     }
 
-    void Restep(std::string str) override {
-        std::ofstream res_file(str + '0', std::ios::binary);
-        if (!res_file.is_open()) {
-            throw FileCreationError(str);
-        }
-        Poco::Zip::Compress compressor(res_file, true);
-        Poco::File from_file(str);
-        if (!from_file.exists()) {
-            throw FileOpenError(str);
-        }
-        compressor.addDirectory(from_file.path(), Poco::DateTime());
-        compressor.close();
-        res_file.close();
-        if (std::remove(str.c_str())) {
-            throw FileRemovingError(str);
-        }
-        if (std::rename((str + '0').c_str(), str.c_str())) {
-            throw FileRenamingError(str + '0');
-        }
+    void Restep(std::iostream& stream) override {
+        Poco::Zip::ZipArchive zip(stream);
+        auto header = zip.findHeader(".file");
+        Poco::Zip::ZipInputStream zip_input_stream(stream, header->second);
+        Poco::StreamCopier::copyStream(zip_input_stream, stream);
     }
 };
 
 class RSAFileProcessor : public FileProcessor {
 public:
-    void Step(std::string str) override {
+    void Step(std::iostream& stream) override {
 
     }
 
-    void Restep(std::string str) override {
+    void Restep(std::iostream& stream) override {
 
     }
 };

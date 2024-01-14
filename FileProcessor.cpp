@@ -1,4 +1,5 @@
 #include <fstream>
+#include "Poco/Foundation.h"
 #include "FileProcessor.h"
 #include <Poco/Zip/Decompress.h>
 #include <Poco/Zip/Compress.h>
@@ -43,4 +44,5 @@ std::shared_ptr<FileProcessor> ChooseFileProcessor(FileProcessingStep type) {
         case FileProcessingStep::RSA:
             return std::make_shared<RSAFileProcessor>();
     }
+    throw std::runtime_error("");
 }

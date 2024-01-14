@@ -42,4 +42,5 @@ std::shared_ptr<Writer> ChooseWriter(TypeFile type, std::ostream &stream) {
         case TypeFile::JSON:
             return std::make_shared<JSONWriter>(stream);
     }
+    throw std::runtime_error("");
 }

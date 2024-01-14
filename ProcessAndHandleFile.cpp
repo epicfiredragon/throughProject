@@ -21,6 +21,7 @@ std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
     * TODO : Dima
      * эта хуйня должна бить строку в подстроки, если это выражение, то кидай подстроку в структуру и ставь тру в is_arithmetic, иначе просто кидай
     */
+    return {};
 }
 
 void

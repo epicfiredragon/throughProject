@@ -75,4 +75,5 @@ std::shared_ptr<Reader> ChooseReader(TypeFile type, std::istream &stream) {
         case TypeFile::JSON:
             return std::make_shared<JSONReader>(stream);
     }
+    throw std::runtime_error("");
 }

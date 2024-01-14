@@ -3,6 +3,8 @@ project(through)
 
 set(CMAKE_CXX_STANDARD 20)
 
+find_package(Poco REQUIRED COMPONENTS Foundation Net XML Util Zip)
+
 add_executable(through main.cpp
         Solver.cpp
         Solver.h
@@ -19,4 +21,4 @@ add_executable(through main.cpp
         ProcessAndHandleFile.h
         exeptions.h)
 
-target_link_libraries(through PocoNet PocoNetSSL PocoFoundation PocoJSON PocoUtil)
+target_link_libraries(through PocoNet PocoNetSSL PocoFoundation PocoJSON PocoUtil PocoZip)

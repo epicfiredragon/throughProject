@@ -19,6 +19,7 @@ add_executable(through main.cpp
         SolverType.h
         ProcessAndHandleFile.cpp
         ProcessAndHandleFile.h
-        exeptions.h)
+        exeptions.h
+        key.h)
 
-target_link_libraries(through PocoNet PocoNetSSL PocoFoundation PocoJSON PocoUtil PocoZip)
+target_link_libraries(through PocoNet PocoNetSSL PocoFoundation PocoJSON PocoUtil PocoZip PocoCrypto)

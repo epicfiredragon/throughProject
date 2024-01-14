@@ -4,7 +4,7 @@
 #include <memory>
 
 enum class FileProcessingStep {
-    Zip, RSA
+    Zip, AES
 };
 
 class FileProcessor {

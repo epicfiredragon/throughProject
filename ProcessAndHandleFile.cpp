@@ -17,14 +17,6 @@ struct markedSubstring {
     bool is_arithmetic = false;
 };
 
-/*struct markedSubstring {
-    std::string str;
-
-    bool is_arithmetic = false;
-
-    markedSubstring(const std::string &s, bool is_arith) : str(s), is_arithmetic(is_arith) {}
-};*/
-
 bool isValidExpression(const std::string &expression) {
     if (expression.size() < 3) {
         return false;
@@ -48,8 +40,6 @@ bool isValidExpression(const std::string &expression) {
 
 std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
     std::vector<markedSubstring> ret;
-    ret.push_back({str, false});
-    return ret;
     std::vector<std::string> arithmetic_string;
     std::int64_t max_position = -1;
     for (std::int64_t i = 0; i < str.size(); i++) {
@@ -93,9 +83,6 @@ HandleProcessedFile(const std::shared_ptr<Reader> &reader, const std::shared_ptr
                     const std::shared_ptr<ArithmeticSolver> &solver) {
     while (!reader->IsEnd()) {
         auto marked_substrings = MarkArithmetic(reader->ReadNextLine());
-        /*
-         * TODO : exceptions
-         */
         std::string handled_string;
         for (const auto &i: marked_substrings) {
             if (i.is_arithmetic) {

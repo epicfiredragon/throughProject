@@ -6,10 +6,12 @@
 #include <Poco/XML/ParserEngine.h>
 
 class TextReader : public Reader {
-    std::istream& stream;
+    std::istream &stream;
+
     bool ended;
+
 public:
-    explicit TextReader(std::istream &istream): stream(istream) {
+    explicit TextReader(std::istream &istream) : stream(istream) {
         ended = (stream.peek() == EOF);
     }
 
@@ -27,7 +29,9 @@ public:
 
 class XMLReader : public Reader {
     Poco::SharedPtr<Poco::JSON::Array> array;
+
     size_t num_of_processed;
+
 public:
     explicit XMLReader(std::istream &istream) {
 
@@ -44,7 +48,9 @@ public:
 
 class JSONReader : public Reader {
     Poco::SharedPtr<Poco::JSON::Array> array;
+
     size_t num_of_processed;
+
 public:
     explicit JSONReader(std::istream &istream) {
         Poco::JSON::Parser parser;

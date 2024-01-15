@@ -4,24 +4,43 @@
 #include <string>
 
 int getPriority(char operand) {
-    if (operand == '^') return 3;
-    if (operand == '*' || operand == '/') return 2;
-    if (operand == '+' || operand == '-') return 1;
-    return 0; 
+    switch (operand) {
+        case '^' :
+            return 3;
+        case '*':
+        case '/':
+            return 2;
+        case '+':
+        case '-':
+            return 1;
+        default:
+            return 0;
+    }
 }
 
-std::string applyOperation(const std::string& first, const std::string& second, char operand) {
+std::string applyOperation(const std::string &first, const std::string &second, char operand) {
     double operand1 = stod(first);
     double operand2 = stod(second);
     double result;
 
     switch (operand) {
-        case '+': result = operand1 + operand2; break;
-        case '-': result = operand1 - operand2; break;
-        case '*': result = operand1 * operand2; break;
-        case '/': result = operand1 / operand2; break;
-        case '^': result = pow(operand1, operand2); break;
-        default: return first + operand + second;
+        case '+':
+            result = operand1 + operand2;
+            break;
+        case '-':
+            result = operand1 - operand2;
+            break;
+        case '*':
+            result = operand1 * operand2;
+            break;
+        case '/':
+            result = operand1 / operand2;
+            break;
+        case '^':
+            result = pow(operand1, operand2);
+            break;
+        default:
+            return first + operand + second;
     }
 
     if (result == floor(result)) {
@@ -31,38 +50,47 @@ std::string applyOperation(const std::string& first, const std::string& second, 
     }
 }
 
-std::string evaluateExpression(const std::string& expression) {
+std::string evaluateExpression(const std::string &expression) {
     std::stack<std::string> values;
     std::stack<char> operators;
 
-    for (char token : expression) {
+    for (char token: expression) {
         if (isdigit(token)) {
             values.emplace(1, token);
         } else if (token == '(') {
             operators.push(token);
         } else if (token == ')') {
             while (!operators.empty() && operators.top() != '(') {
-                std::string second = values.top(); values.pop();
-                std::string first = values.top(); values.pop();
-                char operand = operators.top(); operators.pop();
+                std::string second = values.top();
+                values.pop();
+                std::string first = values.top();
+                values.pop();
+                char operand = operators.top();
+                operators.pop();
                 values.push(applyOperation(first, second, operand));
             }
-            operators.pop(); 
+            operators.pop();
         } else {
             while (!operators.empty() && getPriority(operators.top()) >= getPriority(token)) {
-                std::string second = values.top(); values.pop();
-                std::string first = values.top(); values.pop();
-                char operand = operators.top(); operators.pop();
+                std::string second = values.top();
+                values.pop();
+                std::string first = values.top();
+                values.pop();
+                char operand = operators.top();
+                operators.pop();
                 values.push(applyOperation(first, second, operand));
             }
-            operators.push(token); 
+            operators.push(token);
         }
     }
 
     while (!operators.empty()) {
-        std::string second = values.top(); values.pop();
-        std::string first = values.top(); values.pop();
-        char operand = operators.top(); operators.pop();
+        std::string second = values.top();
+        values.pop();
+        std::string first = values.top();
+        values.pop();
+        char operand = operators.top();
+        operators.pop();
         values.push(applyOperation(first, second, operand));
     }
     return values.top();
@@ -75,8 +103,6 @@ public:
         return evaluateExpression(str);
     }
 };
-    
-    
 
 
 class LibraryArithmeticSolver : public ArithmeticSolver {

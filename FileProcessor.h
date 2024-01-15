@@ -9,9 +9,9 @@ enum class FileProcessingStep {
 
 class FileProcessor {
 public:
-    virtual void Step(std::stringstream&) = 0;
+    virtual void Step(std::stringstream &) = 0;
 
-    virtual void Restep(std::stringstream&) = 0;
+    virtual void Restep(std::stringstream &) = 0;
 };
 
 std::shared_ptr<FileProcessor> ChooseFileProcessor(FileProcessingStep);

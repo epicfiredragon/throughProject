@@ -2,7 +2,8 @@
 #include "Writer.h"
 
 class TextWriter : public Writer {
-    std::ostream& stream;
+    std::ostream &stream;
+
 public:
     explicit TextWriter(std::ostream &istream) : stream(istream) {}
 

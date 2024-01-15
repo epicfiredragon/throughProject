@@ -1,11 +1,8 @@
 #include <iostream>
-#include <fstream>
 #include "SolverType.h"
 #include "ProcessAndHandleFile.h"
 #include "FileInfo.h"
-#include <Poco/Zip/Compress.h>
-#include <Poco/StreamCopier.h>
-#include <sstream>
+#include "exeptions.h"
 
 enum class ApplicationType {
     CMD, UI, WEB
@@ -20,25 +17,23 @@ void mainCMD() {
     info.out_file_name = "out.txt";
     info.in_type = TypeFile::Text;
     info.out_type = TypeFile::Text;
-    info.pre_steps.push_back(FileProcessingStep::Zip);
-
-    std::fstream stream("in.txt");
-    std::stringstream zip;
-    Poco::Zip::Compress compressor(zip, true);
-    std::stringstream from("22 0+5");
-    compressor.addFile(from, Poco::DateTime(), Poco::Path(".file"));
-    compressor.close();
-    stream.clear();
-    Poco::StreamCopier::copyStream(zip, stream);
-    stream.close();
-
     /*
      * TODO : Dima
       * напиши тут ввод с консоли всей херни (имя вход выход, тип вход выход, как шифровали/архивировали, как надо на выходе)
       * и собери в FileInfo info
       * еще дай чек на несовпадение имен
      */
-    ProcessAndHandleFile(info, typeSolver);
+    try {
+        ProcessAndHandleFile(info, typeSolver);
+    }
+    catch (FileOpenError &) {
+        std::cout << "No such file";
+        std::exit(0);
+    }
+    catch (FileCreationError &) {
+        std::cout << "File creation error";
+        std::exit(0);
+    }
 }
 
 void mainUI() {

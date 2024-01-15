@@ -19,8 +19,11 @@ public:
         Poco::Zip::Compress compressor(zip, true);
         compressor.addFile(stream, Poco::DateTime(), Poco::Path(".file"));
         compressor.close();
+        std::stringstream buffer;
+        Poco::StreamCopier::copyStream(stream, buffer);
+        stream.str(std::string());
         stream.clear();
-        Poco::StreamCopier::copyStream(zip, stream);
+        Poco::StreamCopier::copyStream(buffer, stream);
     }
 
     void Restep(std::stringstream &stream) override {
@@ -41,15 +44,23 @@ public:
 
         Poco::Crypto::CipherFactory &factory = Poco::Crypto::CipherFactory::defaultFactory();
         Poco::Crypto::CryptoInputStream encryptor(stream, factory.createCipher(
-                Poco::Crypto::CipherKey("aes-256", key, salt))->createEncryptor());
-        Poco::StreamCopier::copyStream(encryptor, stream);
+                Poco::Crypto::CipherKey("AES-256-CBC", key, salt))->createEncryptor());
+        std::stringstream buffer;
+        Poco::StreamCopier::copyStream(encryptor, buffer);
+        stream.str(std::string());
+        stream.clear();
+        Poco::StreamCopier::copyStream(buffer, stream);
     }
 
     void Restep(std::stringstream &stream) override {
         Poco::Crypto::CipherFactory &factory = Poco::Crypto::CipherFactory::defaultFactory();
         Poco::Crypto::CryptoInputStream encryptor(stream, factory.createCipher(
-                Poco::Crypto::CipherKey("aes-256", key, salt))->createDecryptor());
-        Poco::StreamCopier::copyStream(encryptor, stream);
+                Poco::Crypto::CipherKey("AES-256-CBC", key, salt))->createDecryptor());
+        std::stringstream buffer;
+        Poco::StreamCopier::copyStream(encryptor, buffer);
+        stream.str(std::string());
+        stream.clear();
+        Poco::StreamCopier::copyStream(buffer, stream);
     }
 };
 

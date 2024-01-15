@@ -10,13 +10,13 @@ class TextReader : public Reader {
     bool ended;
 public:
     explicit TextReader(std::istream &istream): stream(istream) {
-        ended = (stream.peek() != EOF);
+        ended = (stream.peek() == EOF);
     }
 
     std::string ReadNextLine() override {
         std::string ret;
         std::getline(stream, ret);
-        ended = (stream.peek() != EOF);
+        ended = (stream.peek() == EOF);
         return ret;
     }
 

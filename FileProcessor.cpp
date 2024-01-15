@@ -14,7 +14,7 @@
 
 class ZipFileProcessor : public FileProcessor {
 public:
-    void Step(std::iostream &stream) override {
+    void Step(std::stringstream &stream) override {
         std::stringstream zip;
         Poco::Zip::Compress compressor(zip, true);
         compressor.addFile(stream, Poco::DateTime(), Poco::Path(".file"));
@@ -23,17 +23,21 @@ public:
         Poco::StreamCopier::copyStream(zip, stream);
     }
 
-    void Restep(std::iostream &stream) override {
+    void Restep(std::stringstream &stream) override {
         Poco::Zip::ZipArchive zip(stream);
         auto header = zip.findHeader(".file");
         Poco::Zip::ZipInputStream zip_input_stream(stream, header->second);
-        Poco::StreamCopier::copyStream(zip_input_stream, stream);
+        std::stringstream buffer;
+        Poco::StreamCopier::copyStream(zip_input_stream, buffer);
+        stream.str(std::string());
+        stream.clear();
+        Poco::StreamCopier::copyStream(buffer, stream);
     }
 };
 
 class AESFileProcessor : public FileProcessor {
 public:
-    void Step(std::iostream &stream) override {
+    void Step(std::stringstream &stream) override {
 
         Poco::Crypto::CipherFactory &factory = Poco::Crypto::CipherFactory::defaultFactory();
         Poco::Crypto::CryptoInputStream encryptor(stream, factory.createCipher(
@@ -41,7 +45,7 @@ public:
         Poco::StreamCopier::copyStream(encryptor, stream);
     }
 
-    void Restep(std::iostream &stream) override {
+    void Restep(std::stringstream &stream) override {
         Poco::Crypto::CipherFactory &factory = Poco::Crypto::CipherFactory::defaultFactory();
         Poco::Crypto::CryptoInputStream encryptor(stream, factory.createCipher(
                 Poco::Crypto::CipherKey("aes-256", key, salt))->createDecryptor());

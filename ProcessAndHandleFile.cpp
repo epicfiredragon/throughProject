@@ -20,7 +20,7 @@ struct markedSubstring {
 };
 
 bool isValidExpression(const std::string &expression) {
-    if (expression.empty()) {
+    if (expression.size() < 3) {
         return false;
     }
 

@@ -3,25 +3,25 @@
 #include <stack>
 #include <string>
 
-int getPriority(char op) {
-    if (op == '^') return 3;
-    if (op == '*' || op == '/') return 2;
-    if (op == '+' || op == '-') return 1;
+int getPriority(char operand) {
+    if (operand == '^') return 3;
+    if (operand == '*' || operand == '/') return 2;
+    if (operand == '+' || operand == '-') return 1;
     return 0; 
 }
 
-std::string applyOperation(const std::string& a, const std::string& b, char op) {
-    double operand1 = stod(a);
-    double operand2 = stod(b);
+std::string applyOperation(const std::string& first, const std::string& second, char operand) {
+    double operand1 = stod(first);
+    double operand2 = stod(second);
     double result;
 
-    switch (op) {
+    switch (operand) {
         case '+': result = operand1 + operand2; break;
         case '-': result = operand1 - operand2; break;
         case '*': result = operand1 * operand2; break;
         case '/': result = operand1 / operand2; break;
         case '^': result = pow(operand1, operand2); break;
-        default: return a + op + b;
+        default: return first + operand + second;
     }
 
     if (result == floor(result)) {
@@ -37,33 +37,33 @@ std::string evaluateExpression(const std::string& expression) {
 
     for (char token : expression) {
         if (isdigit(token)) {
-            values.push(std::string(1, token));
+            values.emplace(1, token);
         } else if (token == '(') {
             operators.push(token);
         } else if (token == ')') {
             while (!operators.empty() && operators.top() != '(') {
-                std::string b = values.top(); values.pop();
-                std::string a = values.top(); values.pop();
-                char op = operators.top(); operators.pop();
-                values.push(applyOperation(a, b, op));
+                std::string second = values.top(); values.pop();
+                std::string first = values.top(); values.pop();
+                char operand = operators.top(); operators.pop();
+                values.push(applyOperation(first, second, operand));
             }
             operators.pop(); 
         } else {
             while (!operators.empty() && getPriority(operators.top()) >= getPriority(token)) {
-                std::string b = values.top(); values.pop();
-                std::string a = values.top(); values.pop();
-                char op = operators.top(); operators.pop();
-                values.push(applyOperation(a, b, op));
+                std::string second = values.top(); values.pop();
+                std::string first = values.top(); values.pop();
+                char operand = operators.top(); operators.pop();
+                values.push(applyOperation(first, second, operand));
             }
             operators.push(token); 
         }
     }
 
     while (!operators.empty()) {
-        std::string b = values.top(); values.pop();
-        std::string a = values.top(); values.pop();
-        char op = operators.top(); operators.pop();
-        values.push(applyOperation(a, b, op));
+        std::string second = values.top(); values.pop();
+        std::string first = values.top(); values.pop();
+        char operand = operators.top(); operators.pop();
+        values.push(applyOperation(first, second, operand));
     }
     return values.top();
 }
@@ -94,5 +94,7 @@ std::shared_ptr<ArithmeticSolver> ChooseSolver(SolverType typeSolver) {
             return std::make_shared<MyArithmeticSolver>();
         case SolverType::Library:
             return std::make_shared<LibraryArithmeticSolver>();
+        default:
+            throw std::system_error();
     }
 }

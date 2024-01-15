@@ -3,7 +3,7 @@ project(through)
 
 set(CMAKE_CXX_STANDARD 20)
 
-find_package(Poco REQUIRED COMPONENTS Foundation Net XML Util Zip)
+find_package(Poco REQUIRED COMPONENTS Foundation Net XML Util Zip Crypto)
 
 add_executable(through main.cpp
         Solver.cpp

@@ -6,13 +6,10 @@
 #include <Poco/XML/ParserEngine.h>
 
 class TextReader : public Reader {
-    std::ifstream stream;
+    std::istream& stream;
     bool ended;
 public:
-    explicit TextReader(const std::string &filename): stream(filename) {
-        if (!stream.is_open()) {
-            throw FileOpenError(filename);
-        }
+    explicit TextReader(std::istream &istream): stream(istream) {
         ended = (stream.peek() != EOF);
     }
 
@@ -32,16 +29,16 @@ class XMLReader : public Reader {
     Poco::SharedPtr<Poco::JSON::Array> array;
     size_t num_of_processed;
 public:
-    explicit XMLReader(const std::string &filename) {
+    explicit XMLReader(std::istream &istream) {
 
     }
 
     std::string ReadNextLine() override {
-
+        return "0";
     }
 
     bool IsEnd() override {
-        return ended;
+        return true;
     }
 };
 
@@ -49,15 +46,12 @@ class JSONReader : public Reader {
     Poco::SharedPtr<Poco::JSON::Array> array;
     size_t num_of_processed;
 public:
-    explicit JSONReader(const std::string &filename) {
-        std::ifstream stream(filename);
-        if (!stream.is_open()) {
-            throw FileOpenError(filename);
-        }
+    explicit JSONReader(std::istream &istream) {
         Poco::JSON::Parser parser;
-        auto parsed = parser.parse(stream).extract<Poco::JSON::Object::Ptr>();
+        Poco::Dynamic::Var result = parser.parse(istream);
+        auto parsed = result.extract<Poco::JSON::Object::Ptr>();
         if (!parsed->has("expressions")) {
-            throw BadFileSyntaxError(filename);
+            throw BadFileSyntaxError("");
         }
         array = parsed->getArray("expressions");
         num_of_processed = 0;
@@ -72,13 +66,14 @@ public:
     }
 };
 
-std::shared_ptr<Reader> ChooseReader(TypeFile type, const std::string &in_file_name) {
+std::shared_ptr<Reader> ChooseReader(TypeFile type, std::istream &stream) {
     switch (type) {
         case TypeFile::Text:
-            return std::make_shared<TextReader>(in_file_name);
+            return std::make_shared<TextReader>(stream);
         case TypeFile::XML:
-            return std::make_shared<XMLReader>(in_file_name);
+            return std::make_shared<XMLReader>(stream);
         case TypeFile::JSON:
-            return std::make_shared<JSONReader>(in_file_name);
+            return std::make_shared<JSONReader>(stream);
     }
+    throw std::runtime_error("");
 }

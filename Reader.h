@@ -13,6 +13,6 @@ public:
     virtual ~Reader() = default;
 };
 
-std::shared_ptr<Reader> ChooseReader(TypeFile type, const std::string &in_file_name);
+std::shared_ptr<Reader> ChooseReader(TypeFile type, std::istream &stream);
 
 #endif //THROUGH_READER_H

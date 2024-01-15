@@ -2,9 +2,9 @@
 #include "Writer.h"
 
 class TextWriter : public Writer {
-    std::ofstream stream;
+    std::ostream& stream;
 public:
-    explicit TextWriter(const std::string &filename) : stream(filename) {}
+    explicit TextWriter(std::ostream &istream) : stream(istream) {}
 
     void WriteLine(const std::string &line) override {
         stream << line << std::endl;
@@ -13,7 +13,7 @@ public:
 
 class XMLWriter : public Writer {
 public:
-    explicit XMLWriter(const std::string &filename) {
+    explicit XMLWriter(std::ostream &istream) {
 
     }
 
@@ -24,7 +24,7 @@ public:
 
 class JSONWriter : public Writer {
 public:
-    explicit JSONWriter(const std::string &filename) {
+    explicit JSONWriter(std::ostream &istream) {
 
     }
 
@@ -33,13 +33,14 @@ public:
     }
 };
 
-std::shared_ptr<Writer> ChooseWriter(TypeFile type, const std::string &out_file_name) {
+std::shared_ptr<Writer> ChooseWriter(TypeFile type, std::ostream &stream) {
     switch (type) {
         case TypeFile::Text:
-            return std::make_shared<TextWriter>(out_file_name);
+            return std::make_shared<TextWriter>(stream);
         case TypeFile::XML:
-            return std::make_shared<XMLWriter>(out_file_name);
+            return std::make_shared<XMLWriter>(stream);
         case TypeFile::JSON:
-            return std::make_shared<JSONWriter>(out_file_name);
+            return std::make_shared<JSONWriter>(stream);
     }
+    throw std::runtime_error("");
 }

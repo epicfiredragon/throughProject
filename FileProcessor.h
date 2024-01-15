@@ -4,12 +4,14 @@
 #include <memory>
 
 enum class FileProcessingStep {
-    Zip, RSA
+    Zip, AES
 };
 
 class FileProcessor {
 public:
-    virtual void Process(std::string) = 0;
+    virtual void Step(std::iostream&) = 0;
+
+    virtual void Restep(std::iostream&) = 0;
 };
 
 std::shared_ptr<FileProcessor> ChooseFileProcessor(FileProcessingStep);

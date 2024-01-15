@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/epicfiredragon/through/Solver.cpp" "CMakeFiles/through.dir/Solver.cpp.o" "gcc" "CMakeFiles/through.dir/Solver.cpp.o.d"
   "/home/epicfiredragon/through/Writer.cpp" "CMakeFiles/through.dir/Writer.cpp.o" "gcc" "CMakeFiles/through.dir/Writer.cpp.o.d"
   "/home/epicfiredragon/through/main.cpp" "CMakeFiles/through.dir/main.cpp.o" "gcc" "CMakeFiles/through.dir/main.cpp.o.d"
+  "/home/epicfiredragon/through/testSolver.cpp" "CMakeFiles/through.dir/testSolver.cpp.o" "gcc" "CMakeFiles/through.dir/testSolver.cpp.o.d"
   )
 
 # Targets to which this target links.

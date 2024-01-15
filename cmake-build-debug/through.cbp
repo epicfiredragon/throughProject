@@ -5,7 +5,7 @@
 		<Option title="through"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\usr\;CMake Files\..\..\..\usr\lib\;CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/epicfiredragon/through/cmake-build-debug"/>
@@ -124,11 +124,110 @@
 		<Unit filename="/home/epicfiredragon/through/exeptions.h">
 			<Option target="through"/>
 		</Unit>
+		<Unit filename="/home/epicfiredragon/through/key.h">
+			<Option target="through"/>
+		</Unit>
 		<Unit filename="/home/epicfiredragon/through/main.cpp">
+			<Option target="through"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/testSolver.cpp">
 			<Option target="through"/>
 		</Unit>
 		<Unit filename="/home/epicfiredragon/through/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/FindPCRE.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoCryptoConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoCryptoConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoCryptoTargets-none.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoCryptoTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoFoundationConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoFoundationConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoFoundationTargets-none.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoFoundationTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoJSONConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoJSONConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoJSONTargets-none.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoJSONTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoNetConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoNetConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoNetTargets-none.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoNetTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoUtilConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoUtilConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoUtilTargets-none.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoUtilTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoXMLConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoXMLConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoXMLTargets-none.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoXMLTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoZipConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoZipConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoZipTargets-none.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
+		</Unit>
+		<Unit filename="/home/epicfiredragon/through/../../../usr/lib/x86_64-linux-gnu/cmake/Poco/PocoZipTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Poco\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

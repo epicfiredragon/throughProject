@@ -1,6 +1,7 @@
 #include "ProcessAndHandleFile.h"
 #include "exeptions.h"
 #include <memory>
+#include <utility>
 #include <vector>
 #include <regex>
 #include "Writer.h"
@@ -14,16 +15,11 @@
 
 struct markedSubstring {
     std::string str;
-    bool is_arithmetic = false;
-     markedSubstring(const std::string& s, bool arithmetic = false)
-        : str(s), is_arithmetic(arithmetic) {}
-     const std::string& getStr() const {
-        return str;
-    }
 
-    bool getIsArithmetic() const {
-        return is_arithmetic;
-    }
+    bool is_arithmetic = false;
+
+    explicit markedSubstring(std::string&& s, bool arithmetic = false)
+            : str(s), is_arithmetic(arithmetic) {}
 };
 
 bool isValidExpression(const std::string &expression) {
@@ -33,9 +29,7 @@ bool isValidExpression(const std::string &expression) {
 
     std::stack<char> parenthesesStack;
 
-    for (size_t i = 0; i < expression.size(); ++i) {
-        char ch = expression[i];
-
+    for (char ch : expression) {
         if (std::isdigit(ch) || ch == '*' || ch == '+' || ch == '-' || ch == '/' || ch == '^') {
         } else if (ch == '(') {
             parenthesesStack.push(ch);
@@ -49,7 +43,8 @@ bool isValidExpression(const std::string &expression) {
         }
     }
 
-    return parenthesesStack.empty() && (std::isdigit(expression.back()) || expression.back() == ')');
+    return parenthesesStack.empty() &&
+           (std::isdigit(expression.back()) || expression.back() == ')');
 }
 
 std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
@@ -75,25 +70,26 @@ std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
     for (size_t i = 0; i < str.size(); i++) {
         if (str.substr(i, arithmetic_string[last_parsed_id].size()) ==
             arithmetic_string[last_parsed_id]) {
-            ret.push_back(markedSubstring(str.substr(last_parsed_char, i - last_parsed_char),
-                                       false));
+            ret.emplace_back(str.substr(last_parsed_char, i - last_parsed_char),
+                                          false);
             last_parsed_char = i;
-            ret.push_back(markedSubstring(str.substr(i, arithmetic_string[last_parsed_id].size()),
-                                       true));
+            ret.emplace_back(str.substr(i, arithmetic_string[last_parsed_id].size()),
+                                          true);
 
             i += arithmetic_string[last_parsed_id].size();
             last_parsed_char = i;
             last_parsed_id++;
         }
-        if(last_parsed_id == arithmetic_string.size()){
-            ret.push_back(markedSubstring(str.substr(i, str.size() - i),
-                                       false));
+        if (last_parsed_id == arithmetic_string.size()) {
+            ret.emplace_back(str.substr(i, str.size() - i),
+                                          false);
             break;
         }
     }
     return ret;
 }
-//дальше не менял 
+
+//дальше не менял
 void
 HandleProcessedFile(const std::shared_ptr<Reader> &reader, const std::shared_ptr<Writer> &writer,
                     const std::shared_ptr<ArithmeticSolver> &solver) {

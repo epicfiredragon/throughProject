@@ -273,6 +273,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+testSolver.o: testSolver.cpp.o
+.PHONY : testSolver.o
+
+# target to build an object file
+testSolver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/testSolver.cpp.o
+.PHONY : testSolver.cpp.o
+
+testSolver.i: testSolver.cpp.i
+.PHONY : testSolver.i
+
+# target to preprocess a source file
+testSolver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/testSolver.cpp.i
+.PHONY : testSolver.cpp.i
+
+testSolver.s: testSolver.cpp.s
+.PHONY : testSolver.s
+
+# target to generate assembly for a file
+testSolver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/through.dir/build.make CMakeFiles/through.dir/testSolver.cpp.s
+.PHONY : testSolver.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -300,6 +324,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... testSolver.o"
+	@echo "... testSolver.i"
+	@echo "... testSolver.s"
 .PHONY : help
 
 

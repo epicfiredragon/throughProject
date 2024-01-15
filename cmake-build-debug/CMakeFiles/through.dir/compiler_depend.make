@@ -252,8 +252,8 @@ CMakeFiles/through.dir/FileProcessor.cpp.o: ../FileProcessor.cpp \
   /usr/include/c++/11/bits/uses_allocator_args.h \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
   /usr/include/c++/11/pstl/execution_defs.h \
-  ../exeptions.h \
-  /usr/include/Poco/FileStream.h \
+  /usr/include/Poco/Zip/Decompress.h \
+  /usr/include/Poco/Zip/Zip.h \
   /usr/include/Poco/Foundation.h \
   /usr/include/Poco/Config.h \
   /usr/include/Poco/Platform.h \
@@ -261,13 +261,6 @@ CMakeFiles/through.dir/FileProcessor.cpp.o: ../FileProcessor.cpp \
   /usr/include/Poco/Alignment.h \
   /usr/include/Poco/Bugcheck.h \
   /usr/include/Poco/Types.h \
-  /usr/include/Poco/FileStream_POSIX.h \
-  /usr/include/Poco/BufferedBidirectionalStreamBuf.h \
-  /usr/include/Poco/BufferAllocator.h \
-  /usr/include/c++/11/cstddef \
-  /usr/include/Poco/StreamUtil.h \
-  /usr/include/Poco/Zip/Decompress.h \
-  /usr/include/Poco/Zip/Zip.h \
   /usr/include/Poco/Zip/ParseCallback.h \
   /usr/include/Poco/Zip/ZipArchive.h \
   /usr/include/Poco/Zip/ZipLocalFileHeader.h \
@@ -311,6 +304,7 @@ CMakeFiles/through.dir/FileProcessor.cpp.o: ../FileProcessor.cpp \
   /usr/include/c++/11/bits/hashtable_policy.h \
   /usr/include/c++/11/bits/enable_special_members.h \
   /usr/include/c++/11/bits/unordered_map.h \
+  /usr/include/c++/11/cstddef \
   /usr/include/Poco/ActiveResult.h \
   /usr/include/Poco/Event.h \
   /usr/include/Poco/Event_POSIX.h \
@@ -333,11 +327,11 @@ CMakeFiles/through.dir/FileProcessor.cpp.o: ../FileProcessor.cpp \
   /usr/include/c++/11/set \
   /usr/include/c++/11/bits/stl_set.h \
   /usr/include/c++/11/bits/stl_multiset.h \
-  /usr/include/Poco/File.h \
-  /usr/include/Poco/File_UNIX.h \
   /usr/include/Poco/Zip/ZipStream.h \
   /usr/include/Poco/Zip/PartialStream.h \
   /usr/include/Poco/BufferedStreamBuf.h \
+  /usr/include/Poco/BufferAllocator.h \
+  /usr/include/Poco/StreamUtil.h \
   /usr/include/Poco/Buffer.h \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
@@ -345,7 +339,31 @@ CMakeFiles/through.dir/FileProcessor.cpp.o: ../FileProcessor.cpp \
   /usr/include/Poco/Checksum.h \
   /usr/include/Poco/StreamCopier.h \
   /usr/include/c++/11/sstream \
-  /usr/include/c++/11/bits/sstream.tcc
+  /usr/include/c++/11/bits/sstream.tcc \
+  ../key.h \
+  /usr/include/Poco/Crypto/CipherKey.h \
+  /usr/include/Poco/Crypto/Crypto.h \
+  /usr/include/openssl/opensslv.h \
+  /usr/include/openssl/macros.h \
+  /usr/include/x86_64-linux-gnu/openssl/opensslconf.h \
+  /usr/include/x86_64-linux-gnu/openssl/configuration.h \
+  /usr/include/Poco/Crypto/CipherKeyImpl.h \
+  /usr/include/Poco/Crypto/OpenSSLInitializer.h \
+  /usr/include/openssl/crypto.h \
+  /usr/include/c++/11/stdlib.h \
+  /usr/include/openssl/e_os2.h \
+  /usr/include/openssl/safestack.h \
+  /usr/include/openssl/stack.h \
+  /usr/include/openssl/types.h \
+  /usr/include/openssl/cryptoerr.h \
+  /usr/include/openssl/symhacks.h \
+  /usr/include/openssl/cryptoerr_legacy.h \
+  /usr/include/openssl/core.h \
+  /usr/include/Poco/Crypto/CipherFactory.h \
+  /usr/include/Poco/Crypto/Cipher.h \
+  /usr/include/Poco/Crypto/CryptoTransform.h \
+  /usr/include/Poco/Crypto/CryptoStream.h \
+  /usr/include/c++/11/iostream
 
 CMakeFiles/through.dir/ProcessAndHandleFile.cpp.o: ../ProcessAndHandleFile.cpp \
   /usr/include/stdc-predef.h \
@@ -599,13 +617,75 @@ CMakeFiles/through.dir/ProcessAndHandleFile.cpp.o: ../ProcessAndHandleFile.cpp \
   /usr/include/c++/11/bits/uses_allocator_args.h \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
   /usr/include/c++/11/pstl/execution_defs.h \
+  ../exeptions.h \
+  /usr/include/c++/11/regex \
+  /usr/include/c++/11/algorithm \
+  /usr/include/c++/11/bits/ranges_algo.h \
+  /usr/include/c++/11/bits/ranges_util.h \
+  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+  /usr/include/c++/11/functional \
+  /usr/include/c++/11/bits/std_function.h \
+  /usr/include/c++/11/unordered_map \
+  /usr/include/c++/11/bits/hashtable.h \
+  /usr/include/c++/11/bits/hashtable_policy.h \
+  /usr/include/c++/11/bits/enable_special_members.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/unordered_map.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  /usr/include/c++/11/bitset \
+  /usr/include/c++/11/locale \
+  /usr/include/c++/11/bits/locale_facets_nonio.h \
+  /usr/include/c++/11/ctime \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h \
+  /usr/include/libintl.h \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/c++/11/bits/locale_facets_nonio.tcc \
+  /usr/include/c++/11/bits/locale_conv.h \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/bits/sstream.tcc \
+  /usr/include/c++/11/stack \
+  /usr/include/c++/11/deque \
+  /usr/include/c++/11/bits/stl_deque.h \
+  /usr/include/c++/11/bits/deque.tcc \
+  /usr/include/c++/11/bits/stl_stack.h \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/cstring \
+  /usr/include/string.h \
+  /usr/include/strings.h \
+  /usr/include/c++/11/bits/regex_constants.h \
+  /usr/include/c++/11/bits/regex_error.h \
+  /usr/include/c++/11/bits/regex_automaton.h \
+  /usr/include/c++/11/bits/regex_automaton.tcc \
+  /usr/include/c++/11/bits/regex_scanner.h \
+  /usr/include/c++/11/bits/regex_scanner.tcc \
+  /usr/include/c++/11/bits/regex_compiler.h \
+  /usr/include/c++/11/bits/regex_compiler.tcc \
+  /usr/include/c++/11/bits/regex.h \
+  /usr/include/c++/11/bits/regex.tcc \
+  /usr/include/c++/11/bits/regex_executor.h \
+  /usr/include/c++/11/bits/regex_executor.tcc \
   ../Writer.h \
   ../Reader.h \
-  ../Solver.h
+  ../Solver.h \
+  /usr/include/Poco/StreamCopier.h \
+  /usr/include/Poco/Foundation.h \
+  /usr/include/Poco/Config.h \
+  /usr/include/Poco/Platform.h \
+  /usr/include/Poco/Platform_POSIX.h \
+  /usr/include/Poco/Alignment.h \
+  /usr/include/Poco/Bugcheck.h \
+  /usr/include/Poco/Types.h \
+  /usr/include/c++/11/cstddef \
+  /usr/include/c++/11/fstream \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 CMakeFiles/through.dir/Reader.cpp.o: ../Reader.cpp \
   /usr/include/stdc-predef.h \
@@ -1252,7 +1332,37 @@ CMakeFiles/through.dir/Solver.cpp.o: ../Solver.cpp \
   /usr/include/c++/11/bits/uses_allocator_args.h \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
   /usr/include/c++/11/pstl/execution_defs.h \
-  ../SolverType.h
+  ../SolverType.h \
+  /usr/include/c++/11/cmath \
+  /usr/include/math.h \
+  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
+  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
+  /usr/include/c++/11/bits/specfun.h \
+  /usr/include/c++/11/limits \
+  /usr/include/c++/11/tr1/gamma.tcc \
+  /usr/include/c++/11/tr1/special_function_util.h \
+  /usr/include/c++/11/tr1/bessel_function.tcc \
+  /usr/include/c++/11/tr1/beta_function.tcc \
+  /usr/include/c++/11/tr1/ell_integral.tcc \
+  /usr/include/c++/11/tr1/exp_integral.tcc \
+  /usr/include/c++/11/tr1/hypergeometric.tcc \
+  /usr/include/c++/11/tr1/legendre_function.tcc \
+  /usr/include/c++/11/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/11/tr1/poly_hermite.tcc \
+  /usr/include/c++/11/tr1/poly_laguerre.tcc \
+  /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  /usr/include/c++/11/stack \
+  /usr/include/c++/11/deque \
+  /usr/include/c++/11/bits/stl_deque.h \
+  /usr/include/c++/11/bits/deque.tcc \
+  /usr/include/c++/11/bits/stl_stack.h
 
 CMakeFiles/through.dir/Writer.cpp.o: ../Writer.cpp \
   /usr/include/stdc-predef.h \
@@ -1505,7 +1615,140 @@ CMakeFiles/through.dir/Writer.cpp.o: ../Writer.cpp \
   /usr/include/c++/11/bits/uses_allocator_args.h \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
   /usr/include/c++/11/pstl/execution_defs.h \
-  ../TypeFile.h
+  ../TypeFile.h \
+  /usr/include/Poco/JSON/Parser.h \
+  /usr/include/Poco/JSON/JSON.h \
+  /usr/include/Poco/Foundation.h \
+  /usr/include/Poco/Config.h \
+  /usr/include/Poco/Platform.h \
+  /usr/include/Poco/Platform_POSIX.h \
+  /usr/include/Poco/Alignment.h \
+  /usr/include/Poco/Bugcheck.h \
+  /usr/include/Poco/Types.h \
+  /usr/include/Poco/JSON/ParserImpl.h \
+  /usr/include/Poco/JSON/Object.h \
+  /usr/include/Poco/JSON/Array.h \
+  /usr/include/Poco/SharedPtr.h \
+  /usr/include/Poco/Exception.h \
+  /usr/include/Poco/AtomicCounter.h \
+  /usr/include/c++/11/atomic \
+  /usr/include/c++/11/algorithm \
+  /usr/include/c++/11/bits/ranges_algo.h \
+  /usr/include/c++/11/bits/ranges_util.h \
+  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+  /usr/include/c++/11/functional \
+  /usr/include/c++/11/bits/std_function.h \
+  /usr/include/c++/11/unordered_map \
+  /usr/include/c++/11/bits/hashtable.h \
+  /usr/include/c++/11/bits/hashtable_policy.h \
+  /usr/include/c++/11/bits/enable_special_members.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/unordered_map.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  /usr/include/c++/11/vector \
+  /usr/include/c++/11/bits/stl_vector.h \
+  /usr/include/c++/11/bits/stl_bvector.h \
+  /usr/include/c++/11/bits/vector.tcc \
+  /usr/include/c++/11/cstddef \
+  /usr/include/Poco/Dynamic/Var.h \
+  /usr/include/Poco/Format.h \
+  /usr/include/Poco/Any.h \
+  /usr/include/Poco/MetaProgramming.h \
+  /usr/include/c++/11/cstring \
+  /usr/include/string.h \
+  /usr/include/strings.h \
+  /usr/include/Poco/OrderedMap.h \
+  /usr/include/Poco/ordered_hash.h \
+  /usr/include/c++/11/cassert \
+  /usr/include/assert.h \
+  /usr/include/c++/11/cmath \
+  /usr/include/math.h \
+  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
+  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
+  /usr/include/c++/11/bits/specfun.h \
+  /usr/include/c++/11/limits \
+  /usr/include/c++/11/tr1/gamma.tcc \
+  /usr/include/c++/11/tr1/special_function_util.h \
+  /usr/include/c++/11/tr1/bessel_function.tcc \
+  /usr/include/c++/11/tr1/beta_function.tcc \
+  /usr/include/c++/11/tr1/ell_integral.tcc \
+  /usr/include/c++/11/tr1/exp_integral.tcc \
+  /usr/include/c++/11/tr1/hypergeometric.tcc \
+  /usr/include/c++/11/tr1/legendre_function.tcc \
+  /usr/include/c++/11/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/11/tr1/poly_hermite.tcc \
+  /usr/include/c++/11/tr1/poly_laguerre.tcc \
+  /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  /usr/include/Poco/ordered_map.h \
+  /usr/include/c++/11/deque \
+  /usr/include/c++/11/bits/stl_deque.h \
+  /usr/include/c++/11/bits/deque.tcc \
+  /usr/include/Poco/ordered_hash.h \
+  /usr/include/Poco/OrderedSet.h \
+  /usr/include/Poco/ordered_set.h \
+  /usr/include/Poco/Dynamic/VarHolder.h \
+  /usr/include/Poco/NumberFormatter.h \
+  /usr/include/Poco/NumericString.h \
+  /usr/include/Poco/Buffer.h \
+  /usr/include/Poco/FPEnvironment.h \
+  /usr/include/Poco/FPEnvironment_C99.h \
+  /usr/include/c++/11/fenv.h \
+  /usr/include/fenv.h \
+  /usr/include/x86_64-linux-gnu/bits/fenv.h \
+  /usr/include/c++/11/locale \
+  /usr/include/c++/11/bits/locale_facets_nonio.h \
+  /usr/include/c++/11/ctime \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h \
+  /usr/include/libintl.h \
+  /usr/include/c++/11/bits/locale_facets_nonio.tcc \
+  /usr/include/c++/11/bits/locale_conv.h \
+  /usr/include/Poco/NumberParser.h \
+  /usr/include/Poco/DateTime.h \
+  /usr/include/Poco/Timestamp.h \
+  /usr/include/Poco/Timespan.h \
+  /usr/include/Poco/LocalDateTime.h \
+  /usr/include/Poco/DateTimeFormat.h \
+  /usr/include/Poco/DateTimeFormatter.h \
+  /usr/include/Poco/DateTimeParser.h \
+  /usr/include/Poco/String.h \
+  /usr/include/Poco/Ascii.h \
+  /usr/include/Poco/UnicodeConverter.h \
+  /usr/include/Poco/UTFString.h \
+  /usr/include/Poco/UTF8String.h \
+  /usr/include/Poco/UUID.h \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/bits/list.tcc \
+  /usr/include/Poco/Dynamic/VarIterator.h \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/set \
+  /usr/include/c++/11/bits/stl_set.h \
+  /usr/include/c++/11/bits/stl_multiset.h \
+  /usr/include/c++/11/sstream \
+  /usr/include/c++/11/bits/sstream.tcc \
+  /usr/include/Poco/JSON/Stringifier.h \
+  /usr/include/Poco/JSONString.h \
+  /usr/include/Poco/Dynamic/Struct.h \
+  /usr/include/Poco/Nullable.h \
+  /usr/include/c++/11/iostream \
+  /usr/include/Poco/JSON/ParseHandler.h \
+  /usr/include/Poco/JSON/Handler.h \
+  /usr/include/c++/11/stack \
+  /usr/include/c++/11/bits/stl_stack.h \
+  /usr/include/Poco/JSON/JSONException.h \
+  /usr/include/Poco/UTF8Encoding.h \
+  /usr/include/Poco/TextEncoding.h
 
 CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
   /usr/include/stdc-predef.h \
@@ -1699,6 +1942,18 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
+  /usr/include/Poco/JSON/JSONException.h \
+  /usr/include/Poco/JSON/JSON.h \
+  /usr/include/Poco/Foundation.h \
+  /usr/include/Poco/Config.h \
+  /usr/include/Poco/Platform.h \
+  /usr/include/Poco/Platform_POSIX.h \
+  /usr/include/Poco/Alignment.h \
+  /usr/include/Poco/Bugcheck.h \
+  /usr/include/Poco/Types.h \
+  /usr/include/Poco/Exception.h \
+  /usr/include/Poco/XML/XMLException.h \
+  /usr/include/Poco/XML/XML.h \
   ../SolverType.h \
   ../ProcessAndHandleFile.h \
   ../FileInfo.h \
@@ -1761,7 +2016,11 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
   /usr/include/c++/11/bits/stream_iterator.h \
   /usr/include/c++/11/bits/uses_allocator_args.h \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
-  /usr/include/c++/11/pstl/execution_defs.h
+  /usr/include/c++/11/pstl/execution_defs.h \
+  ../exeptions.h
+
+CMakeFiles/through.dir/testSolver.cpp.o: ../testSolver.cpp \
+  /usr/include/stdc-predef.h
 
 
 ../Solver.cpp:
@@ -1771,8 +2030,6 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 /usr/include/Poco/XML/ParserEngine.h:
 
 /usr/include/Poco/XML/expat_external.h:
-
-/usr/include/c++/11/stdlib.h:
 
 /usr/include/Poco/XML/Content.h:
 
@@ -1784,11 +2041,7 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/Poco/UTF8Encoding.h:
 
-/usr/include/Poco/JSON/JSONException.h:
-
-/usr/include/c++/11/bits/stl_stack.h:
-
-/usr/include/c++/11/stack:
+/usr/include/Poco/JSON/Handler.h:
 
 /usr/include/Poco/JSON/ParseHandler.h:
 
@@ -1818,22 +2071,6 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/Poco/NumberParser.h:
 
-/usr/include/c++/11/bits/locale_conv.h:
-
-/usr/include/c++/11/bits/locale_facets_nonio.tcc:
-
-/usr/include/libintl.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h:
-
-/usr/include/c++/11/bits/locale_facets_nonio.h:
-
-/usr/include/Poco/XML/ValueTraits.h:
-
-/usr/include/fenv.h:
-
 /usr/include/c++/11/fenv.h:
 
 /usr/include/Poco/FPEnvironment.h:
@@ -1841,10 +2078,6 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 /usr/include/Poco/NumericString.h:
 
 /usr/include/Poco/Dynamic/VarHolder.h:
-
-/usr/include/c++/11/bits/deque.tcc:
-
-/usr/include/c++/11/deque:
 
 /usr/include/c++/11/tr1/riemann_zeta.tcc:
 
@@ -1898,9 +2131,37 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/Poco/JSON/JSON.h:
 
-/usr/include/Poco/JSON/Parser.h:
-
 ../Writer.h:
+
+/usr/include/c++/11/bits/regex_executor.h:
+
+/usr/include/c++/11/bits/regex_compiler.h:
+
+/usr/include/c++/11/bits/regex_automaton.h:
+
+/usr/include/c++/11/bits/regex_error.h:
+
+/usr/include/c++/11/bits/regex_constants.h:
+
+/usr/include/c++/11/bits/stl_stack.h:
+
+/usr/include/c++/11/bits/deque.tcc:
+
+/usr/include/c++/11/deque:
+
+/usr/include/c++/11/stack:
+
+/usr/include/c++/11/bits/locale_conv.h:
+
+/usr/include/c++/11/bits/locale_facets_nonio.tcc:
+
+/usr/include/libintl.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h:
+
+/usr/include/c++/11/bits/locale_facets_nonio.h:
 
 ../TypeFile.h:
 
@@ -1908,11 +2169,57 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 ../SolverType.h:
 
+/usr/include/Poco/Crypto/CryptoTransform.h:
+
+/usr/include/Poco/Crypto/CipherFactory.h:
+
+/usr/include/openssl/core.h:
+
+/usr/include/openssl/stack.h:
+
+/usr/include/openssl/safestack.h:
+
+/usr/include/openssl/e_os2.h:
+
+/usr/include/c++/11/stdlib.h:
+
+/usr/include/Poco/Crypto/CipherKeyImpl.h:
+
+/usr/include/Poco/JSON/Parser.h:
+
+/usr/include/x86_64-linux-gnu/openssl/configuration.h:
+
+/usr/include/x86_64-linux-gnu/openssl/opensslconf.h:
+
+/usr/include/Poco/XML/ValueTraits.h:
+
+/usr/include/fenv.h:
+
+/usr/include/c++/11/bits/regex_scanner.tcc:
+
+/usr/include/openssl/macros.h:
+
+/usr/include/Poco/Crypto/Crypto.h:
+
+/usr/include/Poco/Crypto/CipherKey.h:
+
+/usr/include/Poco/JSON/JSONException.h:
+
+../key.h:
+
+/usr/include/c++/11/bitset:
+
 /usr/include/Poco/StreamCopier.h:
 
 /usr/include/Poco/Checksum.h:
 
 /usr/include/strings.h:
+
+/usr/include/Poco/OrderedMap.h:
+
+/usr/include/Poco/StreamUtil.h:
+
+/usr/include/Poco/BufferAllocator.h:
 
 /usr/include/Poco/Buffer.h:
 
@@ -1932,6 +2239,8 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/setjmp.h:
 
+../testSolver.cpp:
+
 /usr/include/Poco/SignalHandler.h:
 
 /usr/include/Poco/ActiveStarter.h:
@@ -1942,8 +2251,6 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/Poco/ActiveResult.h:
 
-/usr/include/Poco/File.h:
-
 /usr/include/c++/11/bits/unordered_map.h:
 
 /usr/include/c++/11/bits/hashtable_policy.h:
@@ -1951,6 +2258,8 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 /usr/include/c++/11/bits/hashtable.h:
 
 /usr/include/c++/11/unordered_map:
+
+/usr/include/openssl/cryptoerr.h:
 
 /usr/include/c++/11/bits/ranges_util.h:
 
@@ -1976,15 +2285,19 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/Poco/XML/XMLStreamParserException.h:
 
-/usr/include/c++/11/iostream:
-
 /usr/include/x86_64-linux-gnu/bits/fp-fast.h:
+
+/usr/include/c++/11/iostream:
 
 /usr/include/c++/11/bits/node_handle.h:
 
 /usr/include/Poco/Zip/ZipFileInfo.h:
 
 /usr/include/c++/11/bits/vector.tcc:
+
+/usr/include/c++/11/cstddef:
+
+/usr/include/c++/11/bits/stl_vector.h:
 
 /usr/include/c++/11/vector:
 
@@ -2008,26 +2321,6 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/Poco/Zip/ParseCallback.h:
 
-/usr/include/Poco/Zip/Zip.h:
-
-/usr/include/Poco/SharedPtr.h:
-
-/usr/include/Poco/Zip/Decompress.h:
-
-/usr/include/Poco/OrderedMap.h:
-
-/usr/include/Poco/StreamUtil.h:
-
-/usr/include/c++/11/bits/stl_vector.h:
-
-/usr/include/c++/11/cstddef:
-
-/usr/include/Poco/BufferAllocator.h:
-
-/usr/include/Poco/JSON/Handler.h:
-
-/usr/include/Poco/BufferedBidirectionalStreamBuf.h:
-
 /usr/include/Poco/Types.h:
 
 /usr/include/Poco/Bugcheck.h:
@@ -2050,6 +2343,8 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
+/usr/include/Poco/Zip/Zip.h:
+
 /usr/include/c++/11/cstdlib:
 
 /usr/include/Poco/ordered_set.h:
@@ -2069,6 +2364,8 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 /usr/include/c++/11/bits/allocated_ptr.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
+
+/usr/include/Poco/Crypto/CryptoStream.h:
 
 /usr/include/c++/11/bits/stl_bvector.h:
 
@@ -2107,6 +2404,12 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
 
 /usr/include/c++/11/bits/localefwd.h:
+
+/usr/include/Poco/SharedPtr.h:
+
+/usr/include/Poco/Zip/Decompress.h:
+
+/usr/include/c++/11/regex:
 
 /usr/include/x86_64-linux-gnu/sys/select.h:
 
@@ -2222,8 +2525,6 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
 
-/usr/include/Poco/FileStream.h:
-
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
 
 /usr/include/c++/11/bits/memoryfwd.h:
@@ -2258,11 +2559,11 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/Poco/TextEncoding.h:
 
+/usr/include/c++/11/bits/regex_executor.tcc:
+
 /usr/include/Poco/Thread.h:
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
-
-/usr/include/Poco/File_UNIX.h:
 
 /usr/include/c++/11/ext/type_traits.h:
 
@@ -2283,6 +2584,8 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
+
+/usr/include/openssl/symhacks.h:
 
 ../FileProcessor.cpp:
 
@@ -2344,6 +2647,8 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 ../ProcessAndHandleFile.h:
 
+/usr/include/openssl/types.h:
+
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
 
 /usr/include/x86_64-linux-gnu/bits/local_lim.h:
@@ -2361,6 +2666,10 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 /usr/include/c++/11/bits/concept_check.h:
 
 /usr/include/c++/11/bits/exception_ptr.h:
+
+/usr/include/c++/11/bits/regex_automaton.tcc:
+
+/usr/include/openssl/crypto.h:
 
 /usr/include/c++/11/ext/string_conversions.h:
 
@@ -2384,7 +2693,11 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/c++/11/numbers:
 
+/usr/include/openssl/cryptoerr_legacy.h:
+
 /usr/include/c++/11/bits/string_view.tcc:
+
+/usr/include/c++/11/bits/regex.tcc:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h:
 
@@ -2425,6 +2738,8 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 /usr/include/c++/11/bits/shared_ptr.h:
 
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+
+/usr/include/openssl/opensslv.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 
@@ -2467,6 +2782,8 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 /usr/include/c++/11/bits/functional_hash.h:
 
 /usr/include/Poco/XML/expat.h:
+
+/usr/include/Poco/Crypto/Cipher.h:
 
 /usr/include/c++/11/bits/stl_set.h:
 
@@ -2570,8 +2887,6 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/c++/11/ostream:
 
-/usr/include/Poco/FileStream_POSIX.h:
-
 /usr/include/c++/11/bits/unique_ptr.h:
 
 /usr/include/x86_64-linux-gnu/bits/floatn.h:
@@ -2579,6 +2894,8 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 /usr/include/c++/11/bits/range_access.h:
 
 /usr/include/c++/11/iterator:
+
+/usr/include/c++/11/bits/regex_scanner.h:
 
 /usr/include/c++/11/bits/istream.tcc:
 
@@ -2610,6 +2927,8 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/c++/11/bits/uses_allocator.h:
 
+/usr/include/c++/11/bits/regex_compiler.tcc:
+
 /usr/include/limits.h:
 
 /usr/include/c++/11/bits/stl_relops.h:
@@ -2622,6 +2941,8 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/c++/11/tr1/beta_function.tcc:
 
+/usr/include/Poco/Crypto/OpenSSLInitializer.h:
+
 /usr/include/c++/11/array:
 
 /usr/include/c++/11/bits/sstream.tcc:
@@ -2631,6 +2952,8 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 /usr/include/c++/11/climits:
 
 /usr/include/c++/11/bits/refwrap.h:
+
+/usr/include/c++/11/bits/regex.h:
 
 /usr/include/Poco/Config.h:
 
@@ -2648,6 +2971,14 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/posix_opt.h:
 
+../exeptions.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h:
+
+/usr/include/c++/11/bits/exception_defines.h:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
+
 /usr/include/Poco/NumberFormatter.h:
 
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
@@ -2661,14 +2992,6 @@ CMakeFiles/through.dir/main.cpp.o: ../main.cpp \
 /usr/include/c++/11/list:
 
 /usr/include/c++/11/bits/uses_allocator_args.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h:
-
-/usr/include/c++/11/bits/exception_defines.h:
-
-/usr/include/x86_64-linux-gnu/bits/environments.h:
-
-../exeptions.h:
 
 /usr/include/Poco/ThreadPool.h:
 

@@ -2,6 +2,7 @@
 #define THROUGH_FILEINFO_H
 
 #include <vector>
+#include <string>
 #include "TypeFile.h"
 #include "FileProcessor.h"
 

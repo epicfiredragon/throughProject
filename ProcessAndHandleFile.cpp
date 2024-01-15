@@ -15,6 +15,8 @@
 struct markedSubstring {
     std::string str;
     bool is_arithmetic = false;
+     markedSubstring(const std::string& s, bool arithmetic = false)
+        : str(s), is_arithmetic(arithmetic) {}
 };
 
 bool isValidExpression(const std::string &expression) {
@@ -83,7 +85,7 @@ std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
 void
 HandleProcessedFile(const std::shared_ptr<Reader> &reader, const std::shared_ptr<Writer> &writer,
                     const std::shared_ptr<ArithmeticSolver> &solver) {
-    /*while (!reader->IsEnd()) {
+    while (!reader->IsEnd()) {
         auto marked_substrings = MarkArithmetic(reader->ReadNextLine());
         std::string handled_string;
         for (const auto &i: marked_substrings) {
@@ -94,8 +96,8 @@ HandleProcessedFile(const std::shared_ptr<Reader> &reader, const std::shared_ptr
             }
         }
         writer->WriteLine(handled_string);
-    }*/
-    writer->WriteLine(reader->ReadNextLine());
+    }
+    //writer->WriteLine(reader->ReadNextLine());
 }
 
 void ProcessAndHandleFile(const FileInfo &info, SolverType typeSolver) {

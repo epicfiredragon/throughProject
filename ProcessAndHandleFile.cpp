@@ -20,11 +20,15 @@ struct markedSubstring {
 };
 
 bool isValidExpression(const std::string &expression) {
-    if (expression.size() < 3) {
+    if (expression.empty()) {
         return false;
     }
+
     std::stack<char> parenthesesStack;
-    for (char ch: expression) {
+
+    for (size_t i = 0; i < expression.size(); ++i) {
+        char ch = expression[i];
+
         if (std::isdigit(ch) || ch == '*' || ch == '+' || ch == '-' || ch == '/' || ch == '^') {
         } else if (ch == '(') {
             parenthesesStack.push(ch);
@@ -37,7 +41,8 @@ bool isValidExpression(const std::string &expression) {
             return false;
         }
     }
-    return parenthesesStack.empty();
+
+    return parenthesesStack.empty() && (std::isdigit(expression.back()) || expression.back() == ')');
 }
 
 std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
@@ -55,7 +60,7 @@ std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
             if (i + max_position >= str.size()) {
                 break;
             }
-            i += max_position;
+            i += max_position - 1;
         }
     }
     int64_t last_parsed_id = 0;
@@ -75,7 +80,7 @@ std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
                         false));
                 break;
             }
-            i += arithmetic_string[last_parsed_id].size();
+            i += arithmetic_string[last_parsed_id].size() - 1;
             last_parsed_id++;
         }
     }

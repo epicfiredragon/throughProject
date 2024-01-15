@@ -1,11 +1,13 @@
 #include <fstream>
 #include "Writer.h"
+#include <Poco/JSON/Parser.h>
+
 
 class TextWriter : public Writer {
     std::ostream &stream;
 
 public:
-    explicit TextWriter(std::ostream &istream) : stream(istream) {}
+    explicit TextWriter(std::ostream &ostream) : stream(ostream) {}
 
     void WriteLine(const std::string &line) override {
         stream << line << std::endl;
@@ -13,24 +15,29 @@ public:
 };
 
 class XMLWriter : public Writer {
+    std::ostream &stream;
 public:
-    explicit XMLWriter(std::ostream &istream) {
+    explicit XMLWriter(std::ostream &ostream) : stream(ostream) {
 
     }
 
-    void WriteLine(const std::string &) override {
+    void WriteLine(const std::string & str) override {
 
     }
 };
 
 class JSONWriter : public Writer {
+    std::ostream &stream;
+    Poco::JSON::Array array;
 public:
-    explicit JSONWriter(std::ostream &istream) {
+    explicit JSONWriter(std::ostream &ostream) : stream(ostream) {}
 
+    void WriteLine(const std::string &str) override {
+        array.add(Poco::Dynamic::Var(str));
     }
 
-    void WriteLine(const std::string &) override {
-
+    ~JSONWriter() {
+        array.stringify(stream);
     }
 };
 

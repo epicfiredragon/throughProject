@@ -83,7 +83,7 @@ std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
 void
 HandleProcessedFile(const std::shared_ptr<Reader> &reader, const std::shared_ptr<Writer> &writer,
                     const std::shared_ptr<ArithmeticSolver> &solver) {
-    while (!reader->IsEnd()) {
+    /*while (!reader->IsEnd()) {
         auto marked_substrings = MarkArithmetic(reader->ReadNextLine());
         std::string handled_string;
         for (const auto &i: marked_substrings) {
@@ -94,7 +94,8 @@ HandleProcessedFile(const std::shared_ptr<Reader> &reader, const std::shared_ptr
             }
         }
         writer->WriteLine(handled_string);
-    }
+    }*/
+    writer->WriteLine(reader->ReadNextLine());
 }
 
 void ProcessAndHandleFile(const FileInfo &info, SolverType typeSolver) {
@@ -108,8 +109,11 @@ void ProcessAndHandleFile(const FileInfo &info, SolverType typeSolver) {
     for (const auto &processor_step: info.pre_steps) {
         ChooseFileProcessor(processor_step)->Restep(from);
     }
-    HandleProcessedFile(ChooseReader(info.in_type, from),
-                        ChooseWriter(info.out_type, to), ChooseSolver(typeSolver));
+    auto reader = ChooseReader(info.in_type, from);
+    auto writer = ChooseWriter(info.out_type, to);
+    HandleProcessedFile(reader, writer, ChooseSolver(typeSolver));
+    reader.reset();
+    writer.reset();
     for (const auto &processor_step: info.post_steps) {
         ChooseFileProcessor(processor_step)->Step(to);
     }

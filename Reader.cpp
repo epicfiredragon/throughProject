@@ -47,7 +47,7 @@ public:
 };
 
 class JSONReader : public Reader {
-    Poco::SharedPtr<Poco::JSON::Array> array;
+    Poco::JSON::Array::Ptr array;
 
     size_t num_of_processed;
 
@@ -55,11 +55,7 @@ public:
     explicit JSONReader(std::istream &istream) {
         Poco::JSON::Parser parser;
         Poco::Dynamic::Var result = parser.parse(istream);
-        auto parsed = result.extract<Poco::JSON::Object::Ptr>();
-        if (!parsed->has("expressions")) {
-            throw BadFileSyntaxError("");
-        }
-        array = parsed->getArray("expressions");
+        array = result.extract<Poco::JSON::Array::Ptr>();
         num_of_processed = 0;
     }
 
@@ -68,7 +64,7 @@ public:
     }
 
     bool IsEnd() override {
-        return array->size() > num_of_processed;
+        return array->size() == num_of_processed;
     }
 };
 

@@ -17,6 +17,13 @@ struct markedSubstring {
     bool is_arithmetic = false;
      markedSubstring(const std::string& s, bool arithmetic = false)
         : str(s), is_arithmetic(arithmetic) {}
+     const std::string& getStr() const {
+        return str;
+    }
+
+    bool getIsArithmetic() const {
+        return is_arithmetic;
+    }
 };
 
 bool isValidExpression(const std::string &expression) {
@@ -68,25 +75,25 @@ std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
     for (size_t i = 0; i < str.size(); i++) {
         if (str.substr(i, arithmetic_string[last_parsed_id].size()) ==
             arithmetic_string[last_parsed_id]) {
-            ret.push_back(markedSubstring(str.substr(last_parsed_char, i - last_parsed_char + 1),
-                                          false));
+            ret.push_back(markedSubstring(str.substr(last_parsed_char, i - last_parsed_char),
+                                       false));
             last_parsed_char = i;
             ret.push_back(markedSubstring(str.substr(i, arithmetic_string[last_parsed_id].size()),
-                                          true));
-            if (i + arithmetic_string[last_parsed_id].size() >= str.size()) {
-                ret.push_back(markedSubstring(
-                        str.substr(last_parsed_char + arithmetic_string.back().size() + 1,
-                                   str.size() - last_parsed_char + 1),
-                        false));
-                break;
-            }
-            i += arithmetic_string[last_parsed_id].size() - 1;
+                                       true));
+
+            i += arithmetic_string[last_parsed_id].size();
+            last_parsed_char = i;
             last_parsed_id++;
+        }
+        if(last_parsed_id == arithmetic_string.size()){
+            ret.push_back(markedSubstring(str.substr(i, str.size() - i),
+                                       false));
+            break;
         }
     }
     return ret;
 }
-
+//дальше не менял 
 void
 HandleProcessedFile(const std::shared_ptr<Reader> &reader, const std::shared_ptr<Writer> &writer,
                     const std::shared_ptr<ArithmeticSolver> &solver) {

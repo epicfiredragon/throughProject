@@ -5,7 +5,7 @@
 
 int getPriority(char operand) {
     switch (operand) {
-        case '^' :
+        case '^':
             return 3;
         case '*':
         case '/':
@@ -54,9 +54,15 @@ std::string evaluateExpression(const std::string &expression) {
     std::stack<std::string> values;
     std::stack<char> operators;
 
-    for (char token: expression) {
+    for (size_t i = 0; i < expression.length(); ++i) {
+        char token = expression[i];
+
         if (isdigit(token)) {
-            values.emplace(1, token);
+            std::string currentNumber(1, token);
+            while (i + 1 < expression.length() && isdigit(expression[i + 1])) {
+                currentNumber += expression[++i];
+            }
+            values.push(currentNumber);
         } else if (token == '(') {
             operators.push(token);
         } else if (token == ')') {
@@ -83,7 +89,6 @@ std::string evaluateExpression(const std::string &expression) {
             operators.push(token);
         }
     }
-
     while (!operators.empty()) {
         std::string second = values.top();
         values.pop();
@@ -93,6 +98,7 @@ std::string evaluateExpression(const std::string &expression) {
         operators.pop();
         values.push(applyOperation(first, second, operand));
     }
+
     return values.top();
 }
 

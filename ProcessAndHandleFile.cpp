@@ -9,23 +9,29 @@
 #include "FileInfo.h"
 #include "FileProcessor.h"
 #include <Poco/StreamCopier.h>
+#include <sstream>
+#include <fstream>
 
 struct markedSubstring {
     std::string str;
     bool is_arithmetic = false;
 };
-struct markedSubstring {
-      std::string str;
-      bool is_arithmetic = false;
-       markedSubstring(const std::string& s, bool is_arith) : str(s), is_arithmetic(is_arith) {}
-};
-bool isValidExpression(const std::string& expression) {
-    if(expression.size() < 3){
+
+/*struct markedSubstring {
+    std::string str;
+
+    bool is_arithmetic = false;
+
+    markedSubstring(const std::string &s, bool is_arith) : str(s), is_arithmetic(is_arith) {}
+};*/
+
+bool isValidExpression(const std::string &expression) {
+    if (expression.size() < 3) {
         return false;
     }
     std::stack<char> parenthesesStack;
-    for (char ch : expression) {
-        if (std::isdigit(ch) || ch == '*' || ch == '+' || ch == '-' || ch == '/' || ch == '^'){
+    for (char ch: expression) {
+        if (std::isdigit(ch) || ch == '*' || ch == '+' || ch == '-' || ch == '/' || ch == '^') {
         } else if (ch == '(') {
             parenthesesStack.push(ch);
         } else if (ch == ')') {
@@ -39,40 +45,49 @@ bool isValidExpression(const std::string& expression) {
     }
     return parenthesesStack.empty();
 }
-std::vector<markedSubstring> MarkArithmetic(const std::string &str){
-    std::vector<std::string> arithmeticstring;
-    std::int64_t mxpos = -1;
-    for(std::int64_t i = 0 ; i < str.size() ; i++){
-        for(std::int64_t j = 1 ; j <= str.size() - i ; j++){
-            if(isValidExpression(str.substr(i , j)))mxpos = j;
+
+std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
+    std::vector<markedSubstring> ret;
+    ret.push_back({str, false});
+    return ret;
+    std::vector<std::string> arithmetic_string;
+    std::int64_t max_position = -1;
+    for (std::int64_t i = 0; i < str.size(); i++) {
+        for (std::int64_t j = 1; j <= str.size() - i; j++) {
+            if (isValidExpression(str.substr(i, j))) {
+                max_position = j;
+            }
         }
-        if(mxpos != -1){
-            arithmeticstring.push_back(str.substr(i , mxpos));
-            if(i + mxpos >= str.size())break;
-            i += mxpos;
+        if (max_position != -1) {
+            arithmetic_string.push_back(str.substr(i, max_position));
+            if (i + max_position >= str.size()) {
+                break;
+            }
+            i += max_position;
         }
-        mxpos = -1;
+        max_position = -1;
     }
-    std::int64_t temp = 0;
-    mxpos = 0;
-    bool badalloc = false;
-    for(std::int64_t i = 0 ; i < str.size() ; i++){
-        if(str.substr(i , arithmeticstring[temp].size()) == arithmeticstring[t]){
-           markedSubstring(str.substr(mxpos , i - mxpos + 1) , false);
-           mxpos = i;
-           markedSubstring(str.substr(i , arithmeticstring[temp].size()) , true);
-           if(i + arithmeticstring[temp].size() >= str.size()){
-              badalloc = true;
-              break;
-           }
-           i += arithmeticstring[temp].size();
-           temp++;
+    int64_t temp = 0;
+    max_position = 0;
+    for (int64_t i = 0; i < str.size(); i++) {
+        if (str.substr(i, arithmetic_string[temp].size()) == arithmetic_string[temp]) {
+            ret.push_back(markedSubstring(str.substr(max_position, i - max_position + 1), false));
+            max_position = i;
+            ret.push_back(markedSubstring(str.substr(i, arithmetic_string[temp].size()), true));
+            if (i + arithmetic_string[temp].size() >= str.size()) {
+                ret.push_back(markedSubstring(
+                        str.substr(max_position + arithmetic_string.back().size() + 1,
+                                   str.size() - max_position + 1),
+                        false));
+                break;
+            }
+            i += arithmetic_string[temp].size();
+            temp++;
         }
     }
-    if(!badalloc){
-       markedSubstring(str.substr(mxpos + arithmeticstring.back().size() + 1 , str.size() - mxpos + 1) , false);
-    }
+    return ret;
 }
+
 void
 HandleProcessedFile(const std::shared_ptr<Reader> &reader, const std::shared_ptr<Writer> &writer,
                     const std::shared_ptr<ArithmeticSolver> &solver) {

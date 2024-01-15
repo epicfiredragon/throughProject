@@ -41,8 +41,8 @@ bool isValidExpression(const std::string &expression) {
 std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
     std::vector<markedSubstring> ret;
     std::vector<std::string> arithmetic_string;
-    std::int64_t max_position = -1;
     for (std::int64_t i = 0; i < str.size(); i++) {
+        std::int64_t max_position = -1;
         for (std::int64_t j = 1; j <= str.size() - i; j++) {
             if (isValidExpression(str.substr(i, j))) {
                 max_position = j;
@@ -55,24 +55,26 @@ std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
             }
             i += max_position;
         }
-        max_position = -1;
     }
-    int64_t temp = 0;
-    max_position = 0;
-    for (int64_t i = 0; i < str.size(); i++) {
-        if (str.substr(i, arithmetic_string[temp].size()) == arithmetic_string[temp]) {
-            ret.push_back(markedSubstring(str.substr(max_position, i - max_position + 1), false));
-            max_position = i;
-            ret.push_back(markedSubstring(str.substr(i, arithmetic_string[temp].size()), true));
-            if (i + arithmetic_string[temp].size() >= str.size()) {
+    int64_t last_parsed_id = 0;
+    size_t last_parsed_char = 0;
+    for (size_t i = 0; i < str.size(); i++) {
+        if (str.substr(i, arithmetic_string[last_parsed_id].size()) ==
+            arithmetic_string[last_parsed_id]) {
+            ret.push_back(markedSubstring(str.substr(last_parsed_char, i - last_parsed_char + 1),
+                                          false));
+            last_parsed_char = i;
+            ret.push_back(markedSubstring(str.substr(i, arithmetic_string[last_parsed_id].size()),
+                                          true));
+            if (i + arithmetic_string[last_parsed_id].size() >= str.size()) {
                 ret.push_back(markedSubstring(
-                        str.substr(max_position + arithmetic_string.back().size() + 1,
-                                   str.size() - max_position + 1),
+                        str.substr(last_parsed_char + arithmetic_string.back().size() + 1,
+                                   str.size() - last_parsed_char + 1),
                         false));
                 break;
             }
-            i += arithmetic_string[temp].size();
-            temp++;
+            i += arithmetic_string[last_parsed_id].size();
+            last_parsed_id++;
         }
     }
     return ret;

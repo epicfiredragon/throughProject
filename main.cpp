@@ -34,6 +34,10 @@ void mainCMD() {
         std::cout << "File creation error";
         std::exit(0);
     }
+    catch (BadFileSyntaxError &) {
+        std::cout << "Syntax error";
+        std::exit(0);
+    }
 }
 
 void mainUI() {

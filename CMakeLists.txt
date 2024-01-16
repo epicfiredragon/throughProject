@@ -11,6 +11,11 @@ find_package(Catch REQUIRED)
 
 find_package(Poco REQUIRED COMPONENTS Foundation Net XML Util Zip Crypto)
 
+find_package(Qt5Core REQUIRED)
+find_package(Qt5Gui REQUIRED)
+find_package(Qt5Widgets REQUIRED)
+set(QTLibs Qt5::Core Qt5::Gui Qt5::Widgets)
+
 set(LIBS PocoNet PocoNetSSL PocoFoundation PocoXML PocoJSON PocoUtil PocoZip PocoCrypto)
 set(FILES Solver.cpp
         Solver.h
@@ -44,4 +49,4 @@ add_executable(through main.cpp
         ${FILES}
 )
 
-target_link_libraries(through ${LIBS})
+target_link_libraries(through ${LIBS} ${QTLibs})

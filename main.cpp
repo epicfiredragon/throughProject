@@ -5,20 +5,24 @@
 #include "ProcessAndHandleFile.h"
 #include "FileInfo.h"
 #include "exeptions.h"
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
 
 enum class ApplicationType {
-    CMD, UI, WEB
+    CMD, UI
 };
 
-const ApplicationType typeApp = ApplicationType::CMD;
-const SolverType typeSolver = SolverType::My;
+const ApplicationType typeApp = ApplicationType::UI;
+const SolverType typeSolver = SolverType::Library;
 
 void mainCMD() {
     FileInfo info;
     info.in_file_name = "in.txt";
     info.out_file_name = "out.txt";
     info.in_type = TypeFile::Text;
-    info.out_type = TypeFile::XML;
+    info.out_type = TypeFile::Text;
     info.pre_steps.push_back(FileProcessingStep::AES);
     info.post_steps.push_back(FileProcessingStep::Zip);
     
@@ -105,12 +109,24 @@ void mainCMD() {
 
 }
 
-void mainUI() {
+int mainUI() {
+    int zero = 0;
+    char ** ch;
+    QApplication app(zero, ch);
 
-}
+    QWidget widget;
+    widget.resize(640, 480);
+    widget.setWindowTitle("Hello, world!!!");
 
-void mainWEB() {
+    QGridLayout *gridLayout = new QGridLayout(&widget);
 
+    QLabel* label = new QLabel("Hello, world!!!");
+    label->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
+    gridLayout->addWidget(label);
+
+    widget.show();
+
+    return app.exec();
 }
 
 int main() {
@@ -119,10 +135,6 @@ int main() {
             mainCMD();
             break;
         case ApplicationType::UI:
-            mainUI();
-            break;
-        case ApplicationType::WEB:
-            mainWEB();
-            break;
+            return mainUI();
     }
 }

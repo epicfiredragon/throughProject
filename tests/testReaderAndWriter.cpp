@@ -18,8 +18,8 @@
 
 TEST_CASE("TextReader Test", "[TextReader]") {
     std::istringstream input("Line 1\nLine 2\nLine 3");
-    auto reader = std::make_shared<TextReader>(input);
-
+    std::shared_ptr<Reader> reader = ChooseReader(TypeFile::Text , input);
+     
     SECTION("ReadNextLine()") {
         REQUIRE(reader->ReadNextLine() == "Line 1");
         REQUIRE(reader->ReadNextLine() == "Line 2");
@@ -38,8 +38,9 @@ TEST_CASE("TextReader Test", "[TextReader]") {
 
 TEST_CASE("TextWriter Test", "[TextWriter]") {
     std::ostringstream output;
-    auto writer = std::make_shared<TextWriter>(output);
-
+   
+    std::shared_ptr<Writer> writer = ChooseWriter(TypeFile::Text , output);
+     
     SECTION("WriteLine()") {
         writer->WriteLine("Line 1");
         writer->WriteLine("Line 2");
@@ -49,4 +50,77 @@ TEST_CASE("TextWriter Test", "[TextWriter]") {
         REQUIRE(output.str() == expectedOutput);
     }
 }
+TEST_CASE("XmlReader Test", "[XmlReader]") {
+    std::istringstream input("<xml>\n<a>aa</a>\n<b>55+99</b>\n<c>599+6666</c>\n<d>hsdjhjsjds</d>\n</xml>");
+    std::shared_ptr<Reader> reader = ChooseReader(TypeFile::XML, input);
+
+    SECTION("ReadNextNode()") {
+        REQUIRE(reader->ReadNextLine() == "aa");
+        REQUIRE(reader->ReadNextLine() == "55+99");
+        REQUIRE(reader->ReadNextLine() == "599+6666");
+        REQUIRE(reader->ReadNextLine() == "hsdjhjsjds");
+        REQUIRE(reader->ReadNextLine() == "");
+    }
+
+    SECTION("IsEnd()") {
+        REQUIRE_FALSE(reader->IsEnd());
+
+        while (!reader->IsEnd()) {
+            reader->ReadNextLine();
+        }
+        REQUIRE(reader->IsEnd());
+    }
+}
+
+TEST_CASE("XmlWriter Test", "[XmlWriter]") {
+    std::ostringstream output;
+    std::shared_ptr<Writer> writer = ChooseWriter(TypeFile::XML, output);
+
+    SECTION("WriteNode()") {
+        writer->WriteLine("aa");
+        writer->WriteLine("55+99");
+        writer->WriteLine("599+6666");
+        writer->WriteLine("hsdjhjsjds");
+
+        std::string expectedOutput = "<xml>\n<res>aa</res>\n<res>55+99</res>\n<res>599+6666</res>\n<res>hsdjhjsjds</res>\n</xml>\n";
+        REQUIRE(output.str() == expectedOutput);
+    }
+}
+
+TEST_CASE("JsonReader Test", "[JsonReader]") {
+    std::istringstream input(R"(["aa", "55+99", "599+6666", "hsdjhjsjds"])");
+    std::shared_ptr<Reader> reader = ChooseReader(TypeFile::JSON, input);
+
+    SECTION("ReadNextNode()") {
+        REQUIRE(reader->ReadNextLine() == "aa");
+        REQUIRE(reader->ReadNextLine() == "55+99");
+        REQUIRE(reader->ReadNextLine() == "599+6666");
+        REQUIRE(reader->ReadNextLine() == "hsdjhjsjds");
+        REQUIRE(reader->ReadNextLine() == "");
+    }
+
+    SECTION("IsEnd()") {
+        REQUIRE_FALSE(reader->IsEnd());
+        while (!reader->IsEnd()) {
+            reader->ReadNextLine();
+        }
+        REQUIRE(reader->IsEnd());
+    }
+}
+
+TEST_CASE("JsonWriter Test", "[JsonWriter]") {
+    std::ostringstream output;
+    std::shared_ptr<Writer> writer = ChooseWriter(TypeFile::JSON, output);
+
+    SECTION("WriteNode()") {
+        writer->WriteLine("aa");
+        writer->WriteLine("55+99");
+        writer->WriteLine("599+6666");
+        writer->WriteLine("hsdjhjsjds");
+
+        std::string expectedOutput = R"(["aa", "55+99", "599+6666", "hsdjhjsjds"])" "\n";
+        REQUIRE(output.str() == expectedOutput);
+    }
+}
+
 

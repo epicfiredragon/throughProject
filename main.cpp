@@ -114,6 +114,7 @@ int mainUI() {
     QApplication app(zero, ch);
 
     MagicWidget magicWidget;
+    magicWidget.setSolverType(typeSolver);
     magicWidget.show();
 
     return app.exec();

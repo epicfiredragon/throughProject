@@ -20,7 +20,7 @@ public:
         compressor.addFile(stream, Poco::DateTime(), Poco::Path(".file"));
         compressor.close();
         std::stringstream buffer;
-        Poco::StreamCopier::copyStream(stream, buffer);
+        Poco::StreamCopier::copyStream(zip, buffer);
         stream.str(std::string());
         stream.clear();
         Poco::StreamCopier::copyStream(buffer, stream);

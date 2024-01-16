@@ -20,63 +20,53 @@
 TEST_CASE("ZipFileProcessor Test", "[ZipFileProcessor]") {
     {
         
-        std::stringstream input;
-        input << "This is a test input for ZipFileProcessor.";
+        std::stringstream stream;
+        stream << "This is a test input for ZipFileProcessor.";
         std::shared_ptr<FileProcessor> zipProcessor = ChooseFileProcessor(FileProcessingStep::Zip);
 
         
-        REQUIRE_NOTHROW(zipProcessor->Step(input));
+        REQUIRE_NOTHROW(zipProcessor->Step(stream));
+        REQUIRE_NOTHROW(zipProcessor->Restep(stream));
 
         
-        std::stringstream output;
-        REQUIRE_NOTHROW(zipProcessor->Restep(output));
-
-        
-        REQUIRE(output.str() == "This is a test input for ZipFileProcessor.");
+        REQUIRE(stream.str() == "This is a test input for ZipFileProcessor.");
     }
    {
         
-        std::stringstream input;
-        input << "";
+        std::stringstream stream;
+        stream << "";
         std::shared_ptr<FileProcessor> zipProcessor = ChooseFileProcessor(FileProcessingStep::Zip);
 
         
-        REQUIRE_NOTHROW(zipProcessor->Step(input));
+        REQUIRE_NOTHROW(zipProcessor->Step(stream));
+        REQUIRE_NOTHROW(zipProcessor->Restep(stream));
 
         
-        std::stringstream output;
-        REQUIRE_NOTHROW(zipProcessor->Restep(output));
-
-        
-        REQUIRE(output.str() == "");
+        REQUIRE(stream.str().empty());
     }
     
 }
 
 TEST_CASE("AESFileProcessor Test", "[AESFileProcessor]") {
     {
-        std::stringstream input;
-        input << "This is a test input for AESFileProcessor.";
+        std::stringstream stream;
+        stream << "This is a test input for AESFileProcessor.";
         std::shared_ptr<FileProcessor> aesProcessor = ChooseFileProcessor(FileProcessingStep::AES);
 
-        REQUIRE_NOTHROW(aesProcessor->Step(input));
+        REQUIRE_NOTHROW(aesProcessor->Step(stream));
+        REQUIRE_NOTHROW(aesProcessor->Restep(stream));
 
-        std::stringstream output;
-        REQUIRE_NOTHROW(aesProcessor->Restep(output));
-
-        REQUIRE(output.str() == "This is a test input for AESFileProcessor.");
+        REQUIRE(stream.str() == "This is a test input for AESFileProcessor.");
     }
     {
-        std::stringstream input;
-        input << "";
+        std::stringstream stream;
+        stream << "";
         std::shared_ptr<FileProcessor> aesProcessor = ChooseFileProcessor(FileProcessingStep::AES);
 
-        REQUIRE_NOTHROW(aesProcessor->Step(input));
+        REQUIRE_NOTHROW(aesProcessor->Step(stream));
+        REQUIRE_NOTHROW(aesProcessor->Restep(stream));
 
-        std::stringstream output;
-        REQUIRE_NOTHROW(aesProcessor->Restep(output));
-
-        REQUIRE(output.str() == "");
+        REQUIRE(stream.str().empty());
     }
 
 }

@@ -60,28 +60,36 @@ void mainCMD() {
         }
     }
     
-    std::string proceestypestring;
+    std::vector<std::string> proceestypestrings;
+    int count;
+    std::cin >> count;
     std::cout << "Name type of input process : ";
-    std::cin >> proceestypestring;
-    if(typestring == "Zip"){
+    for (int i = 0; i < count; ++i) {
+
+    std::cin >> proceestypestrings[i];
+    if(proceestypestrings[i] == "Zip"){
         info.pre_steps.push_back(FileProcessingStep::Zip);
     }
     else{
-        if(typestring == "AES"){
+        if(proceestypestrings[i] == "AES"){
             info.pre_steps.push_back(FileProcessingStep::AES);
         }
     }   
+    }
+    proceestypestrings.clear();
     std::cout << "Name type of output process : ";
-    std::cin >> proceestypestring;
-    if(typestring == "Zip"){
+    std::cin >> count;
+    for (int i = 0; i < count; ++i) {
+       std::cin >> proceestypestrings[i];
+    if(proceestypestrings[i] == "Zip"){
         info.post_steps.push_back(FileProcessingStep::Zip);
     }
     else{
-        if(typestring == "AES"){
+        if(proceestypestrings[i] == "AES"){
             info.post_steps.push_back(FileProcessingStep::AES);
         }
     }  
-    
+    }
     try {
         ProcessAndHandleFile(info, typeSolver);
     }

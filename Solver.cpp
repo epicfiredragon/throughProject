@@ -98,8 +98,9 @@ std::string evaluateExpression(const std::string &expression) {
         operators.pop();
         values.push(applyOperation(first, second, operand));
     }
-
-    return values.top();
+    std::string inf = "-2147483648";
+    std::string result = (values.top() != inf) ? values.top() : "inf";
+    return result;
 }
 
 

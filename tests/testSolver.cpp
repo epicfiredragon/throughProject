@@ -30,3 +30,9 @@ TEST_CASE("Test5") {
     auto solver = ChooseSolver(solver_type);
     REQUIRE(solver->Solve("2147483646+1") == "2147483647");
 }
+
+TEST_CASE("Test6") {
+    auto solver_type = SolverType::My;
+    auto solver = ChooseSolver(solver_type);
+    REQUIRE(solver->Solve("2147483646+2") == "inf");
+}

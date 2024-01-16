@@ -9,6 +9,8 @@
 #include "Solver.h"
 #include "FileInfo.h"
 #include "FileProcessor.h"
+#include "key.h"
+#include "TypeFile.h"
 #include <Poco/StreamCopier.h>
 #include <sstream>
 #include <fstream>
@@ -67,6 +69,11 @@ std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
     }
     int64_t last_parsed_id = 0;
     size_t last_parsed_char = 0;
+    if(arithmetic_string.size() == 0){
+       ret.emplace_back(str , false);
+       return ret;
+    }
+    else{
     for (size_t i = 0; i < str.size(); i++) {
         if (str.substr(i, arithmetic_string[last_parsed_id].size()) ==
             arithmetic_string[last_parsed_id]) {
@@ -87,6 +94,7 @@ std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
         }
     }
     return ret;
+   }
 }
 
 //дальше не менял

@@ -24,71 +24,73 @@ void mainCMD() {
     info.out_type = TypeFile::Text;
     info.pre_steps.push_back(FileProcessingStep::AES);
     info.post_steps.push_back(FileProcessingStep::Zip);
-    
+
     std::cout << "Name input file : ";
     std::cin >> info.in_file_name;
     std::cout << "Name output file : ";
     std::cin >> info.out_file_name;
-    
-    std::string typestring;
+
+    std::string type_string;
     std::cout << "Name type of input file : ";
-    std::cin >> typestring;
-    if(typestring == "Text"){
+    std::cin >> type_string;
+    if (type_string == "Text") {
         info.in_type = TypeFile::Text;
-    }
-    else{
-        if(typestring == "XML") {
+    } else {
+        if (type_string == "XML") {
             info.in_type = TypeFile::XML;
+        } else {
+            if (type_string == "JSON") {
+                info.out_type = TypeFile::JSON;
+            } else {
+                std::cout << "Bad file type";
+                std::exit(0);
+            }
         }
-        else {
-           info.in_type = TypeFile::JSON;
-        }
-    }             
+    }
     std::cout << "Name type of output file : ";
-    std::cin >> typestring;
-    if(typestring == "Text"){
+    std::cin >> type_string;
+    if (type_string == "Text") {
         info.out_type = TypeFile::Text;
-    }
-    else{
-        if(typestring == "XML") {
+    } else {
+        if (type_string == "XML") {
             info.out_type = TypeFile::XML;
-        }
-        else {
-           if(typestring == "JSON"){
-               info.out_type = TypeFile::JSON;
-           }
+        } else {
+            if (type_string == "JSON") {
+                info.out_type = TypeFile::JSON;
+            } else {
+                std::cout << "Bad file type";
+                std::exit(0);
+            }
         }
     }
-    
-    std::vector<std::string> proceestypestrings;
+
+    std::vector<std::string> proceed_type_strings;
     int count;
     std::cin >> count;
     std::cout << "Name type of input process : ";
     for (int i = 0; i < count; ++i) {
 
-    std::cin >> proceestypestrings[i];
-    if(proceestypestrings[i] == "Zip"){
-        info.pre_steps.push_back(FileProcessingStep::Zip);
-    }
-    else{
-        if(proceestypestrings[i] == "AES"){
-            info.pre_steps.push_back(FileProcessingStep::AES);
+        std::cin >> proceed_type_strings[i];
+        if (proceed_type_strings[i] == "Zip") {
+            info.pre_steps.push_back(FileProcessingStep::Zip);
+        } else {
+            if (proceed_type_strings[i] == "AES") {
+                info.pre_steps.push_back(FileProcessingStep::AES);
+            }
         }
-    }   
     }
-    proceestypestrings.clear();
+    proceed_type_strings.clear();
     std::cout << "Name type of output process : ";
     std::cin >> count;
     for (int i = 0; i < count; ++i) {
-       std::cin >> proceestypestrings[i];
-    if(proceestypestrings[i] == "Zip"){
-        info.post_steps.push_back(FileProcessingStep::Zip);
-    }
-    else{
-        if(proceestypestrings[i] == "AES"){
-            info.post_steps.push_back(FileProcessingStep::AES);
+        std::cin >> proceed_type_strings[i];
+        if (proceed_type_strings[i] == "Zip") {
+            info.post_steps.push_back(FileProcessingStep::Zip);
+        } else {
+            if (proceed_type_strings[i] == "AES") {
+                info.post_steps.push_back(FileProcessingStep::AES);
+            }
         }
-    }  
     }
     try {
         ProcessAndHandleFile(info, typeSolver);
@@ -118,7 +120,7 @@ void mainCMD() {
 
 int mainUI() {
     int zero = 0;
-    char ** ch;
+    char **ch;
     QApplication app(zero, ch);
 
     MagicWidget magicWidget;

@@ -16,24 +16,38 @@ public:
 
 class XMLWriter : public Writer {
     std::ostream &stream;
+
 public:
     explicit XMLWriter(std::ostream &ostream) : stream(ostream) {
-
+        stream << "<xml>" << std::endl;
     }
 
-    void WriteLine(const std::string & str) override {
-
+    void WriteLine(const std::string &str) override {
+        std::stringstream stringstream(str);
+        std::string segment;
+        while (std::getline(stringstream, segment, '\r')) {
+            stream << "<res>" << segment << "</res>" << std::endl;
+        }
+    }
+    ~XMLWriter() {
+        stream << "</xml>" << std::endl;
     }
 };
 
 class JSONWriter : public Writer {
     std::ostream &stream;
+
     Poco::JSON::Array array;
+
 public:
     explicit JSONWriter(std::ostream &ostream) : stream(ostream) {}
 
     void WriteLine(const std::string &str) override {
-        array.add(Poco::Dynamic::Var(str));
+        std::stringstream stringstream(str);
+        std::string segment;
+        while (std::getline(stringstream, segment, '\r')) {
+            array.add(Poco::Dynamic::Var(segment));
+        }
     }
 
     ~JSONWriter() {

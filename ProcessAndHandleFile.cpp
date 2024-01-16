@@ -105,7 +105,6 @@ HandleProcessedFile(const std::shared_ptr<Reader> &reader, const std::shared_ptr
         }
         writer->WriteLine(handled_string);
     }
-    //writer->WriteLine(reader->ReadNextLine());
 }
 
 void ProcessAndHandleFile(const FileInfo &info, SolverType typeSolver) {

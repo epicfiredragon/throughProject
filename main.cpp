@@ -18,7 +18,7 @@ void mainCMD() {
     info.in_file_name = "in.txt";
     info.out_file_name = "out.txt";
     info.in_type = TypeFile::Text;
-    info.out_type = TypeFile::Text;
+    info.out_type = TypeFile::XML;
     /*
      * TODO : Dima
       * напиши тут ввод с консоли всей херни (имя вход выход, тип вход выход, как шифровали/архивировали, как надо на выходе)
@@ -40,10 +40,10 @@ void mainCMD() {
         std::cout << "Syntax error";
         std::exit(0);
     }
-    /*catch (Poco::JSON::JSONException &) {
+    catch (Poco::JSON::JSONException &) {
         std::cout << "Syntax error";
         std::exit(0);
-    }
+    }/*
     catch (Poco::XML::XMLException &) {
         std::cout << "Syntax error";
         std::exit(0);

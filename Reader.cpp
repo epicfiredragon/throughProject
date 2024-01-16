@@ -1,9 +1,12 @@
 #include "Reader.h"
-#include "exeptions.h"
 #include <fstream>
 #include <Poco/JSON/Parser.h>
-#include <Poco/XML/XMLStreamParser.h>
-#include <Poco/XML/ParserEngine.h>
+#include "Poco/DOM/DOMParser.h"
+#include "Poco/DOM/Document.h"
+#include "Poco/DOM/NodeList.h"
+#include "Poco/DOM/Node.h"
+#include "Poco/DOM/NamedNodeMap.h"
+#include "Poco/SAX/InputSource.h"
 
 class TextReader : public Reader {
     std::istream &stream;
@@ -28,21 +31,30 @@ public:
 };
 
 class XMLReader : public Reader {
-    Poco::SharedPtr<Poco::JSON::Array> array;
-
-    size_t num_of_processed;
-
+    std::vector<std::string> array;
+    size_t num_of_processed = 0;
 public:
     explicit XMLReader(std::istream &istream) {
-
+        Poco::XML::DOMParser parser;
+        Poco::XML::InputSource src(istream);
+        auto xmlDocument = parser.parse(&src);
+        auto node = xmlDocument->getNodeByPath("/xml");
+        std::string str = Poco::XML::fromXMLString(node->innerText());
+        std::stringstream stringstream(str);
+        std::string segment;
+        while (std::getline(stringstream, segment)) {
+            if (!segment.empty()) {
+                array.push_back(segment);
+            }
+        }
     }
 
     std::string ReadNextLine() override {
-        return "0";
+        return array[num_of_processed++];
     }
 
     bool IsEnd() override {
-        return true;
+        return array.size() == num_of_processed;
     }
 };
 

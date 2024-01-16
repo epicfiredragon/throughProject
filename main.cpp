@@ -40,7 +40,7 @@ void mainCMD() {
             info.in_type = TypeFile::XML;
         } else {
             if (type_string == "JSON") {
-                info.out_type = TypeFile::JSON;
+                info.in_type = TypeFile::JSON;
             } else {
                 std::cout << "Bad file type";
                 std::exit(0);

@@ -33,7 +33,66 @@ FileInfo setFileInfo(const std::string& in_file, const std::string& out_file, co
     FileInfo info;
     info.in_file_name = in_file;
     info.out_file_name = out_file;
-
+    if (in_file_type == "Text") {
+        info.in_type = TypeFile::Text;
+    } else {
+        if (in_file_type == "XML") {
+            info.in_type = TypeFile::XML;
+        } else {
+            if (in_file_type == "JSON") {
+                info.in_type = TypeFile::JSON;
+            } else {
+                throw InFileError("");
+            }
+        }
+    }
+    if (out_file_type == "Text") {
+        info.out_type = TypeFile::Text;
+    } else {
+        if (out_file_type == "XML") {
+            info.out_type = TypeFile::XML;
+        } else {
+            if (out_file_type == "JSON") {
+                info.out_type = TypeFile::JSON;
+            } else {
+                throw InFileError("");
+            }
+        }
+    }
+    int pos = 0;
+    for(int i = 0 ; i < pre_steps.size() ; i++){
+        if(pre_steps[i] == ' ' or i == pre_steps.size() - 1){
+             std::string temmpstring = pre_steps.substr(i + 1 , i - pos - 1);
+             if (temmpstring == "Zip") {
+                info.pre_steps.push_back(FileProcessingStep::Zip);
+             } else {
+                    if (temmpstring == "AES") {
+                        info.pre_steps.push_back(FileProcessingStep::AES);
+                    }
+                    else{
+                        throw PreError("");
+                    }
+        }
+             pos = i;
+        }
+    }
+    pos = 0;
+    for(int i = 0 ; i < post_steps.size() ; i++){
+        if(post_steps[i] == ' ' or i == post_steps.size() - 1){
+             std::string temmpstring = post_steps.substr(i + 1 , i - pos - 1);
+             if (temmpstring == "Zip") {
+                info.post_steps.push_back(FileProcessingStep::Zip);
+             } else {
+                    if (temmpstring == "AES") {
+                        info.post_steps.push_back(FileProcessingStep::AES);
+                    }
+                    else{
+                        throw PostError("");
+                    }
+        }
+             pos = i;
+        }
+    }
     return info;
 }
 

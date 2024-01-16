@@ -19,12 +19,66 @@ void mainCMD() {
     info.out_file_name = "out.txt";
     info.in_type = TypeFile::Text;
     info.out_type = TypeFile::XML;
-    /*
-     * TODO : Dima
-      * напиши тут ввод с консоли всей херни (имя вход выход, тип вход выход, как шифровали/архивировали, как надо на выходе)
-      * и собери в FileInfo info
-      * еще дай чек на несовпадение имен
-     */
+    info.pre_steps.push_back(FileProcessingStep::AES);
+    info.post_steps.push_back(FileProcessingStep::Zip);
+    
+    std::cout << "Name input file : ";
+    std::cin >> info.in_file_name;
+    std::cout << "Name output file : ";
+    std::cin >> info.out_file_name;
+    
+    std::string typestring;
+    std::cout << "Name type of input file : ";
+    std::cin >> typestring;
+    if(typestring == "Text"){
+        info.in_type = TypeFile::Text;
+    }
+    else{
+        if(typestring == "XML") {
+            info.in_type = TypeFile::XML;
+        }
+        else {
+           info.in_type = TypeFile::JSON;
+        }
+    }             
+    std::cout << "Name type of output file : ";
+    std::cin >> typestring;
+    if(typestring == "Text"){
+        info.out_type = TypeFile::Text;
+    }
+    else{
+        if(typestring == "XML") {
+            info.out_type = TypeFile::XML;
+        }
+        else {
+           if(typestring == "JSON"){
+               info.out_type = TypeFile::JSON;
+           }
+        }
+    }
+    
+    std::string proceestypestring;
+    std::cout << "Name type of input process : ";
+    std::cin >> proceestypestring;
+    if(typestring == "Zip"){
+        info.pre_steps.push_back(FileProcessingStep::Zip);
+    }
+    else{
+        if(typestring == "AES"){
+            info.pre_steps.push_back(FileProcessingStep::AES);
+        }
+    }   
+    std::cout << "Name type of output process : ";
+    std::cin >> proceestypestring;
+    if(typestring == "Zip"){
+        info.post_steps.push_back(FileProcessingStep::Zip);
+    }
+    else{
+        if(typestring == "AES"){
+            info.post_steps.push_back(FileProcessingStep::AES);
+        }
+    }  
+    
     try {
         ProcessAndHandleFile(info, typeSolver);
     }

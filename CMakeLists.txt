@@ -36,6 +36,9 @@ endfunction()
 
 
 add_catch(test_solver tests/testSolver.cpp)
+add_catch(test_processor tests/testFileProcessor.cpp)
+add_catch(test_process_handle tests/testProcessAndHandle.cpp)
+add_catch(test_rw tests/testReaderAndWriter.cpp)
 
 add_executable(through main.cpp
         ${FILES}

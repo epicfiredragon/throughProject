@@ -2,6 +2,7 @@
 #include <cmath>
 #include <stack>
 #include <string>
+#include <ceval/ceval.h>
 
 int getPriority(char operand) {
     switch (operand) {
@@ -115,9 +116,7 @@ public:
 class LibraryArithmeticSolver : public ArithmeticSolver {
 public:
     std::string Solve(const std::string &str) override {
-        /*
-         * TODO : найти библу
-         */
+        return std::to_string(ceval_result(str));
     }
 };
 

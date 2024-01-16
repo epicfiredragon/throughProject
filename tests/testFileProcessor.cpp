@@ -42,7 +42,7 @@ TEST_CASE("ZipFileProcessor Test", "[ZipFileProcessor]") {
         REQUIRE_NOTHROW(zipProcessor->Restep(stream));
 
         
-        REQUIRE(stream.str() == "");
+        REQUIRE(stream.str().empty());
     }
     
 }
@@ -66,7 +66,7 @@ TEST_CASE("AESFileProcessor Test", "[AESFileProcessor]") {
         REQUIRE_NOTHROW(aesProcessor->Step(stream));
         REQUIRE_NOTHROW(aesProcessor->Restep(stream));
 
-        REQUIRE(stream.str() == "");
+        REQUIRE(stream.str().empty());
     }
 
 }

@@ -4,8 +4,15 @@
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include "SolverType.h"
+#include "ProcessAndHandleFile.h"
+#include "FileInfo.h"
+#include "exeptions.h"
+#include "MagicWiget.h"
 
-EncoderWidget::EncoderWidget(QWidget* parent) :
+
+
+MagicWidget::MagicWidget(QWidget* parent) :
         QWidget(parent)
 {
     m_gridLayout = new QGridLayout(this);
@@ -17,15 +24,15 @@ EncoderWidget::EncoderWidget(QWidget* parent) :
     m_gridLayout->addWidget(m_pushButton, 1, 1);
     resize(640, 480);
 
-    connect(m_pushButton, &QPushButton::clicked, this, &EncoderWidget::encodeDecode);
+    connect(m_pushButton, &QPushButton::clicked, this, &MagicWidget::process);
 }
 
-EncoderWidget::~EncoderWidget()
+MagicWidget::~MagicWidget()
 {
 
 }
 
-void EncoderWidget::encodeDecode()
+void MagicWidget::process()
 {
 
     const char* input = m_textEdit->toPlainText().toLatin1().data();

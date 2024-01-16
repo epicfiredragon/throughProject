@@ -43,11 +43,11 @@ void mainCMD() {
     catch (Poco::JSON::JSONException &) {
         std::cout << "Syntax error";
         std::exit(0);
-    }/*
+    }
     catch (Poco::XML::XMLException &) {
         std::cout << "Syntax error";
         std::exit(0);
-    }*/
+    }
 
 }
 

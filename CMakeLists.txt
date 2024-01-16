@@ -31,7 +31,9 @@ set(FILES Solver.cpp
         ProcessAndHandleFile.cpp
         ProcessAndHandleFile.h
         exeptions.h
-        key.h)
+        key.h
+        MagicWiget.cpp
+        MagicWiget.h)
 
 function(add_catch TARGET)
     add_executable(${TARGET} ${ARGN} ${FILES})

@@ -5,10 +5,9 @@
 #include "ProcessAndHandleFile.h"
 #include "FileInfo.h"
 #include "exeptions.h"
+#include "MagicWiget.h"
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QWidget>
 #include <QtWidgets/QGridLayout>
-#include <QtWidgets/QLabel>
 
 enum class ApplicationType {
     CMD, UI
@@ -114,17 +113,8 @@ int mainUI() {
     char ** ch;
     QApplication app(zero, ch);
 
-    QWidget widget;
-    widget.resize(640, 480);
-    widget.setWindowTitle("Hello, world!!!");
-
-    QGridLayout *gridLayout = new QGridLayout(&widget);
-
-    QLabel* label = new QLabel("Hello, world!!!");
-    label->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
-    gridLayout->addWidget(label);
-
-    widget.show();
+    EncoderWidget encoderWidget;
+    encoderWidget.show();
 
     return app.exec();
 }

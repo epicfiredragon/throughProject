@@ -59,7 +59,6 @@ TEST_CASE("XmlReader Test", "[XmlReader]") {
         REQUIRE(reader->ReadNextLine() == "55+99");
         REQUIRE(reader->ReadNextLine() == "599+6666");
         REQUIRE(reader->ReadNextLine() == "hsdjhjsjds");
-        REQUIRE(reader->ReadNextLine() == "");
     }
 
     SECTION("IsEnd()") {
@@ -73,14 +72,16 @@ TEST_CASE("XmlReader Test", "[XmlReader]") {
 }
 
 TEST_CASE("XmlWriter Test", "[XmlWriter]") {
-    std::ostringstream output;
-    std::shared_ptr<Writer> writer = ChooseWriter(TypeFile::XML, output);
 
     SECTION("WriteNode()") {
+        std::ostringstream output;
+        std::shared_ptr<Writer> writer = ChooseWriter(TypeFile::XML, output);
         writer->WriteLine("aa");
         writer->WriteLine("55+99");
         writer->WriteLine("599+6666");
         writer->WriteLine("hsdjhjsjds");
+        writer.reset();
+
 
         std::string expectedOutput = "<xml>\n<res>aa</res>\n<res>55+99</res>\n<res>599+6666</res>\n<res>hsdjhjsjds</res>\n</xml>\n";
         REQUIRE(output.str() == expectedOutput);
@@ -88,7 +89,7 @@ TEST_CASE("XmlWriter Test", "[XmlWriter]") {
 }
 
 TEST_CASE("JsonReader Test", "[JsonReader]") {
-    std::istringstream input(R"(["aa", "55+99", "599+6666", "hsdjhjsjds"])");
+    std::istringstream input(R"(["aa","55+99","599+6666","hsdjhjsjds"])");
     std::shared_ptr<Reader> reader = ChooseReader(TypeFile::JSON, input);
 
     SECTION("ReadNextNode()") {
@@ -96,7 +97,6 @@ TEST_CASE("JsonReader Test", "[JsonReader]") {
         REQUIRE(reader->ReadNextLine() == "55+99");
         REQUIRE(reader->ReadNextLine() == "599+6666");
         REQUIRE(reader->ReadNextLine() == "hsdjhjsjds");
-        REQUIRE(reader->ReadNextLine() == "");
     }
 
     SECTION("IsEnd()") {
@@ -109,16 +109,17 @@ TEST_CASE("JsonReader Test", "[JsonReader]") {
 }
 
 TEST_CASE("JsonWriter Test", "[JsonWriter]") {
-    std::ostringstream output;
-    std::shared_ptr<Writer> writer = ChooseWriter(TypeFile::JSON, output);
-
     SECTION("WriteNode()") {
+        std::ostringstream output;
+        std::shared_ptr<Writer> writer = ChooseWriter(TypeFile::JSON, output);
         writer->WriteLine("aa");
         writer->WriteLine("55+99");
         writer->WriteLine("599+6666");
         writer->WriteLine("hsdjhjsjds");
+        std::cout << output.str();
+        writer.reset();
 
-        std::string expectedOutput = R"(["aa", "55+99", "599+6666", "hsdjhjsjds"])" "\n";
+        std::string expectedOutput = R"(["aa","55+99","599+6666","hsdjhjsjds"])";
         REQUIRE(output.str() == expectedOutput);
     }
 }

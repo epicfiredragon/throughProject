@@ -38,7 +38,7 @@ set(FILES Solver.cpp
 function(add_catch TARGET)
     add_executable(${TARGET} ${ARGN} ${FILES})
     target_include_directories(${TARGET} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-    target_link_libraries(${TARGET} ${LIBS} Catch2::Catch2WithMain)
+    target_link_libraries(${TARGET} ${LIBS} ${QTLibs} Catch2::Catch2WithMain)
 endfunction()
 
 

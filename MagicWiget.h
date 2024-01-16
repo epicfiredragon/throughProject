@@ -8,17 +8,17 @@ class QGridLayout;
 class QLineEdit;
 class QPushButton;
 
-class EncoderWidget : public QWidget
+class MagicWidget : public QWidget
 {
 
 public:
-    explicit EncoderWidget(QWidget* parent = nullptr);
-    virtual ~EncoderWidget();
+    explicit MagicWidget(QWidget* parent = nullptr);
+    virtual ~MagicWidget();
 
 signals:
 
 private slots:
-    void encodeDecode();
+    void process();
 
 private:
     QGridLayout* m_gridLayout;

@@ -121,8 +121,8 @@ int mainUI() {
     char ** ch;
     QApplication app(zero, ch);
 
-    EncoderWidget encoderWidget;
-    encoderWidget.show();
+    MagicWidget magicWidget;
+    magicWidget.show();
 
     return app.exec();
 }

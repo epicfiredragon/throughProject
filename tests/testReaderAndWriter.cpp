@@ -18,8 +18,8 @@
 
 TEST_CASE("TextReader Test", "[TextReader]") {
     std::istringstream input("Line 1\nLine 2\nLine 3");
-    std::shared_ptr<Reader> reader = ChooseReader(TypeFile::Text , input);
-     
+    std::shared_ptr<Reader> reader = ChooseReader(TypeFile::Text, input);
+
     SECTION("ReadNextLine()") {
         REQUIRE(reader->ReadNextLine() == "Line 1");
         REQUIRE(reader->ReadNextLine() == "Line 2");
@@ -38,9 +38,9 @@ TEST_CASE("TextReader Test", "[TextReader]") {
 
 TEST_CASE("TextWriter Test", "[TextWriter]") {
     std::ostringstream output;
-   
-    std::shared_ptr<Writer> writer = ChooseWriter(TypeFile::Text , output);
-     
+
+    std::shared_ptr<Writer> writer = ChooseWriter(TypeFile::Text, output);
+
     SECTION("WriteLine()") {
         writer->WriteLine("Line 1");
         writer->WriteLine("Line 2");
@@ -50,8 +50,10 @@ TEST_CASE("TextWriter Test", "[TextWriter]") {
         REQUIRE(output.str() == expectedOutput);
     }
 }
+
 TEST_CASE("XmlReader Test", "[XmlReader]") {
-    std::istringstream input("<xml>\n<a>aa</a>\n<b>55+99</b>\n<c>599+6666</c>\n<d>hsdjhjsjds</d>\n</xml>");
+    std::istringstream input(
+            "<xml>\n<a>aa</a>\n<b>55+99</b>\n<c>599+6666</c>\n<d>hsdjhjsjds</d>\n</xml>");
     std::shared_ptr<Reader> reader = ChooseReader(TypeFile::XML, input);
 
     SECTION("ReadNextNode()") {

@@ -78,7 +78,6 @@ std::vector<markedSubstring> MarkArithmetic(const std::string &str) {
                 arithmetic_string[last_parsed_id]) {
                 ret.emplace_back(str.substr(last_parsed_char, i - last_parsed_char),
                                  false);
-                last_parsed_char = i;
                 ret.emplace_back(str.substr(i, arithmetic_string[last_parsed_id].size()),
                                  true);
 

@@ -19,32 +19,32 @@
 
 TEST_CASE("ZipFileProcessor Test", "[ZipFileProcessor]") {
     {
-        
+
         std::stringstream stream;
         stream << "This is a test input for ZipFileProcessor.";
         std::shared_ptr<FileProcessor> zipProcessor = ChooseFileProcessor(FileProcessingStep::Zip);
 
-        
+
         REQUIRE_NOTHROW(zipProcessor->Step(stream));
         REQUIRE_NOTHROW(zipProcessor->Restep(stream));
 
-        
+
         REQUIRE(stream.str() == "This is a test input for ZipFileProcessor.");
     }
-   {
-        
+    {
+
         std::stringstream stream;
         stream << "";
         std::shared_ptr<FileProcessor> zipProcessor = ChooseFileProcessor(FileProcessingStep::Zip);
 
-        
+
         REQUIRE_NOTHROW(zipProcessor->Step(stream));
         REQUIRE_NOTHROW(zipProcessor->Restep(stream));
 
-        
+
         REQUIRE(stream.str().empty());
     }
-    
+
 }
 
 TEST_CASE("AESFileProcessor Test", "[AESFileProcessor]") {

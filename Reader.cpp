@@ -32,7 +32,9 @@ public:
 
 class XMLReader : public Reader {
     std::vector<std::string> array;
+
     size_t num_of_processed = 0;
+
 public:
     explicit XMLReader(std::istream &istream) {
         Poco::XML::DOMParser parser;

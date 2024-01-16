@@ -29,6 +29,7 @@ public:
             stream << "<res>" << segment << "</res>" << std::endl;
         }
     }
+
     ~XMLWriter() {
         stream << "</xml>" << std::endl;
     }

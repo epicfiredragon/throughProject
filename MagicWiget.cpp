@@ -29,7 +29,9 @@ class PostError : public std::runtime_error {
     using std::runtime_error::runtime_error;
 };
 
-FileInfo setFileInfo(const std::string& in_file, const std::string& out_file, const std::string& in_file_type, const std::string& out_file_type, const std::string& pre_steps, const std::string& post_steps) {
+FileInfo setFileInfo(const std::string &in_file, const std::string &out_file,
+                     const std::string &in_file_type, const std::string &out_file_type,
+                     const std::string &pre_steps, const std::string &post_steps) {
     FileInfo info;
     info.in_file_name = in_file;
     info.out_file_name = out_file;
@@ -60,47 +62,43 @@ FileInfo setFileInfo(const std::string& in_file, const std::string& out_file, co
         }
     }
     int pos = 0;
-    for(int i = 0 ; i < pre_steps.size() ; i++){
-        if(pre_steps[i] == ' ' or i == pre_steps.size() - 1){
-             std::string temmpstring = pre_steps.substr(i + 1 , i - pos - 1);
-             if (temmpstring == "Zip") {
+    for (int i = 0; i < pre_steps.size(); i++) {
+        if (pre_steps[i] == ' ' or i == pre_steps.size() - 1) {
+            std::string temmpstring = pre_steps.substr(i + 1, i - pos - 1);
+            if (temmpstring == "Zip") {
                 info.pre_steps.push_back(FileProcessingStep::Zip);
-             } else {
-                    if (temmpstring == "AES") {
-                        info.pre_steps.push_back(FileProcessingStep::AES);
-                    }
-                    else{
-                        throw PreError("");
-                    }
-        }
-             pos = i;
+            } else {
+                if (temmpstring == "AES") {
+                    info.pre_steps.push_back(FileProcessingStep::AES);
+                } else {
+                    throw PreError("");
+                }
+            }
+            pos = i;
         }
     }
     pos = 0;
-    for(int i = 0 ; i < post_steps.size() ; i++){
-        if(post_steps[i] == ' ' or i == post_steps.size() - 1){
-             std::string temmpstring = post_steps.substr(i + 1 , i - pos - 1);
-             if (temmpstring == "Zip") {
+    for (int i = 0; i < post_steps.size(); i++) {
+        if (post_steps[i] == ' ' or i == post_steps.size() - 1) {
+            std::string temmpstring = post_steps.substr(i + 1, i - pos - 1);
+            if (temmpstring == "Zip") {
                 info.post_steps.push_back(FileProcessingStep::Zip);
-             } else {
-                    if (temmpstring == "AES") {
-                        info.post_steps.push_back(FileProcessingStep::AES);
-                    }
-                    else{
-                        throw PostError("");
-                    }
-        }
-             pos = i;
+            } else {
+                if (temmpstring == "AES") {
+                    info.post_steps.push_back(FileProcessingStep::AES);
+                } else {
+                    throw PostError("");
+                }
+            }
+            pos = i;
         }
     }
     return info;
 }
 
 
-
-MagicWidget::MagicWidget(QWidget* parent) :
-        QWidget(parent)
-{
+MagicWidget::MagicWidget(QWidget *parent) :
+        QWidget(parent) {
     m_gridLayout = new QGridLayout(this);
     m_in_file = new QLineEdit(this);
     m_gridLayout->addWidget(m_in_file, 0, 0);
@@ -139,16 +137,15 @@ MagicWidget::MagicWidget(QWidget* parent) :
     connect(m_pushButton, &QPushButton::clicked, this, &MagicWidget::process);
 }
 
-MagicWidget::~MagicWidget()
-{
+MagicWidget::~MagicWidget() = default;
 
-}
-
-void MagicWidget::process()
-{
+void MagicWidget::process() {
     FileInfo info;
     try {
-        info = setFileInfo(m_in_file->text().toStdString(), m_out_file->text().toStdString(), m_in_file_type->text().toStdString(), m_out_file_type->text().toStdString(), m_pre_steps->text().toStdString(), m_post_steps->text().toStdString());
+        info = setFileInfo(m_in_file->text().toStdString(), m_out_file->text().toStdString(),
+                           m_in_file_type->text().toStdString(),
+                           m_out_file_type->text().toStdString(),
+                           m_pre_steps->text().toStdString(), m_post_steps->text().toStdString());
     }
     catch (InFileError &) {
         QMessageBox msgBox;
